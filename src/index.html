@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alburhan PWA</title>
+    <meta name="description" content="" />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alburhan PWA</title>
-  <meta name="description" content="" />
-  <link rel='manifest' href='images/favicons/manifest.json'>
-</head>
+  <body>
+    <h1>Hello world</h1>
+  </body>
 
-<body>
-  <h1>Hello world</h1>
-</body>
+  <script type="module">
+    import "https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate";
 
+    const el = document.createElement("pwa-update");
+    document.body.appendChild(el);
+  </script>
 </html>
