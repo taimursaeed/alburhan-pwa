@@ -1,0 +1,65 @@
+// =============
+// Theme - Light
+// =============
+
+$page-bg: #fff;
+$primary: #000000;
+$secondary: #ffc700;
+$sidebar-bg: #f5f5f5;
+
+:root {
+  --page-bg: #{$page-bg};
+  --primary: #{$primary};
+  --secondary: #{$secondary};
+  --sidebar-bg: #{$sidebar-bg};
+}
+
+// =============
+// Theme - Dark
+// =============
+
+$dark-page-bg: #171717;
+$dark-primary: #ffffff;
+$dark-secondary: #806610;
+$dark-sidebar-bg: #252525;
+
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --page-bg: #{$dark-page-bg};
+    --primary: #{$dark-primary};
+    --secondary: #{$dark-secondary};
+    --sidebar-bg: #{$dark-sidebar-bg};
+  }
+}
+.dark {
+  --page-bg: #{$dark-page-bg};
+  --primary: #{$dark-primary};
+  --secondary: #{$dark-secondary};
+  --sidebar-bg: #{$dark-sidebar-bg};
+  img {
+    opacity: 0.8;
+  }
+}
+
+// Typography
+$font-size: 20px;
+$font: "Inter", sans-serif;
+
+//Spacing
+$container-padding: 80px;
+
+$border-radius: 30px;
+
+//Breakpoints
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
