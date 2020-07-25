@@ -86,6 +86,13 @@ const favicons = new WebappWebpackPlugin({
     appDescription: config.site_description,
     developerName: null,
     developerURL: null,
+    background: '#3E3E94',
+    theme_color: '#3E3E94',
+    dir: "auto",
+    lang: "Urdu",
+    display: "fullscreen",
+    orientation: "portrait",
+    start_url: "/",
     icons: {
       android: true,
       appleIcon: true,
