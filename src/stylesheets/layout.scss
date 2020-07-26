@@ -7,7 +7,6 @@
   transition: transform 0.3s ease;
   .page {
     flex: 0 0 100%;
-    background: red;
     &.page-login {
       background: $brand;
       display: flex;
