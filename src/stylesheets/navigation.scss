@@ -7,10 +7,10 @@
   display: flex;
   justify-content: space-around;
   border-top: 1px solid #efefef;
-  border-top-left-radius: $border-radius;
-  border-top-right-radius: $border-radius;
+  border-top-left-radius: $border-radius * 3;
+  border-top-right-radius: $border-radius * 3;
   box-shadow: 0 -2px 22px rgba(0, 0, 0, 0.08);
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   .btn-nav {
     flex: 1;
     justify-content: center;
@@ -22,7 +22,7 @@
       color: $brand;
     }
     &.rug:before {
-      font-size: 1.8rem;
+      font-size: 1.7rem;
     }
   }
 }

@@ -1,25 +1,70 @@
 .page-container {
   height: 100%;
+  position: relative;
+  z-index: 1;
   &.logged-in {
-    height: calc(100% - #{$nav-height - 20});
+    .page-section {
+      padding: 0 20px 20px 20px;
+      header {
+        background: $brand;
+        margin: 0 -20px;
+        height: 150px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 20px;
+        h2 {
+          color: $secondary;
+          margin: 0;
+          white-space: nowrap;
+          font-size: 1.8rem;
+          .icon {
+            background: lighten($brand, 20%);
+            width: 50px;
+            height: 50px;
+            border-radius: 60px;
+            display: inline-block;
+            text-align: center;
+            line-height: 50px;
+            margin-left: 15px;
+            vertical-align: middle;
+          }
+        }
+      }
+      .page-content {
+        padding: 20px 0;
+      }
+    }
   }
   display: flex;
   transition: transform 0.3s ease;
   .page {
     flex: 0 0 100%;
+    height: calc(100% - #{$nav-height});
     &.page-login {
       background: $brand;
       display: flex;
       flex-flow: column nowrap;
       justify-content: center;
       align-items: center;
+      height: 100%;
+
+      > img {
+        margin-bottom: 20px;
+        width: 24vh;
+        max-width: 160px;
+      }
       h1 {
         color: $secondary;
+        margin: 0;
+        font-size: 3rem;
       }
     }
   }
 }
 .form-login {
+  width: 80%;
+  max-width: 500px;
   margin-top: 50px;
   display: flex;
   flex-flow: column nowrap;
