@@ -1,16 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alburhan PWA</title>
+    <meta name="description" content="" />
+    <link rel="manifest" href="images/favicons/manifest.json" />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alburhan PWA</title>
-  <meta name="description" content="" />
-  <link rel='manifest' href='images/favicons/manifest.json'>
-</head>
-
-<body>
-  <h1>Hello world</h1>
-</body>
-
+  <body>
+    <main class="page-container">
+      <div class="page page-login" data-page="login">
+        <img src="images/logo.png" alt="Logo" />
+        <h1>تعلق ایپ</h1>
+        <form id="loginForm" class="form-login">
+          <input type="text" placeholder="Username" />
+          <input type="password" placeholder="Password" />
+          <button class="btn btn-primary" id="loginBtn" type="button">Log In</button>
+        </form>
+      </div>
+      <div class="page" data-page="home">
+        this is Home
+      </div>
+      <div class="page" data-page="namaz">
+        this is Namaz
+      </div>
+    </main>
+    <nav class="nav hide">
+      <button class="btn-nav" id="namaz">نماز</button>
+      <button class="btn-nav" id="home">ھوم</button>
+    </nav>
+  </body>
 </html>

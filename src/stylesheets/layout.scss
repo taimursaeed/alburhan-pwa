@@ -1,57 +1,30 @@
-.row {
+.page-container {
+  height: 100%;
+  &.logged-in {
+    height: calc(100% - #{$nav-height - 20});
+  }
   display: flex;
-  flex-wrap: wrap;
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
-}
-
-.row.vertical-center {
-  justify-content: center;
-}
-
-.col-6 {
-  flex-basis: 100%;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-  @include md {
-    flex-basis: 50%;
+  transition: transform 0.3s ease;
+  .page {
+    flex: 0 0 100%;
+    background: red;
+    &.page-login {
+      background: $brand;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+      h1 {
+        color: $secondary;
+      }
+    }
   }
 }
-
-.container {
-  width: 100%;
-  @include md {
-    display: flex;
-    align-items: flex-start;
-    max-width: 1200px;
-    margin: 0 auto;
-    min-height: calc(100vh - #{$container-padding});
-    justify-content: space-between;
-  }
-}
-
-.col-left {
-  padding: 16px;
-  margin: -20px -20px 0 -20px;
-  @include md {
-    margin: 0;
-    flex-basis: 25%;
-    position: sticky;
-    top: #{$container-padding / 2};
-  }
-}
-
-.col-right {
-  @include md {
-    padding: 0 16px;
-    // overflow-y: auto;
-    height: 100%;
-    flex-basis: 70%;
-  }
-  &.center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+.form-login {
+  margin-top: 50px;
+  display: flex;
+  flex-flow: column nowrap;
+  input {
+    margin-bottom: 20px;
   }
 }

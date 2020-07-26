@@ -2,20 +2,16 @@
   box-sizing: border-box;
 }
 html {
-  overflow-x: hidden;
+  overflow: hidden;
   font-size: $font-size;
+  height: 100%;
 }
 
 body {
-  background: var(--page-bg);
-  color: var(--primary);
+  background: $page-bg;
+  color: $primary;
   font-family: $font;
-  padding: #{$container-padding / 4};
-  transition: background 0.5s ease, color 0.5s ease;
-  @include md {
-    line-height: $font-size + 8;
-    padding: #{$container-padding / 2};
-  }
+  height: 100%;
 }
 h1,
 h2,
@@ -33,7 +29,7 @@ ol {
 }
 
 a {
-  color: var(--primary);
+  color: $primary;
   text-decoration: none;
   transition: color 0.5s ease;
 }

@@ -1,0 +1,13 @@
+button {
+  cursor: pointer;
+  outline: none;
+}
+input {
+  border: none;
+  border-radius: $border-radius;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16);
+  outline: none;
+  height: 44px;
+  line-height: 44px;
+  padding: 0 20px;
+}
