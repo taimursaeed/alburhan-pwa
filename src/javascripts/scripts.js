@@ -12,6 +12,12 @@ function moveToPage(p) {
 // Page Transitions
 navLinks.forEach((ele) => {
   ele.addEventListener("click", (e) => {
+    navLinks.forEach((ele) => {
+      //remove all active classes
+      ele.classList.remove("active");
+    });
+
+    e.currentTarget.classList.add("active");
     pageContainer.classList.add("page");
     const cID = e.currentTarget.id;
     pages.forEach((e, index) => {

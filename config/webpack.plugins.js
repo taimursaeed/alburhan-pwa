@@ -13,6 +13,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const RobotstxtPlugin = require('robotstxt-webpack-plugin');
 const SitemapPlugin = require('sitemap-webpack-plugin').default;
+const IconfontPlugin = require('iconfont-plugin-webpack');
+
 
 const config = require('./site.config');
 
@@ -136,9 +138,24 @@ const google = new GoogleAnalyticsPlugin({
   id: config.googleAnalyticsUA,
 });
 
+//Icon Fonts
+const iconFonts = new IconfontPlugin({
+    src: './src/images/iconsvgs', // required - directory where your .svg files are located
+    family: 'iconfonts', // optional - the `font-family` name. if multiple iconfonts are generated, the dir names will be used.
+    dest: {
+        font: './src/fonts/[family].[type]', // required - paths of generated font files
+        css: './src/stylesheets/[family].scss' // required - paths of generated css files
+    },
+    watch: {
+        pattern: 'src/images/iconsvgs/**/*.svg', // required - watch these files to reload
+        cwd: undefined // optional - current working dir for watching
+    }
+  })
+
 module.exports = [
   clean,
   //stylelint,
+  iconFonts,
   cssExtract,
   ...generateHTMLPlugins(),
   fs.existsSync(config.favicon) && favicons,

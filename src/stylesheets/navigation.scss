@@ -6,10 +6,23 @@
   height: $nav-height;
   display: flex;
   justify-content: space-around;
-  border-top:1px solid #EFEFEF;
+  border-top: 1px solid #efefef;
   border-top-left-radius: $border-radius;
   border-top-right-radius: $border-radius;
   box-shadow: 0 -2px 22px rgba(0, 0, 0, 0.08);
   font-size: 1.4rem;
-
+  .btn-nav {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-flow: column nowrap;
+    transition: color 0.3s ease;
+    &.active {
+      color: $brand;
+    }
+    &.rug:before {
+      font-size: 1.8rem;
+    }
+  }
 }
