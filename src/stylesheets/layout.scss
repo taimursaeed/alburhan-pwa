@@ -42,10 +42,11 @@
         height: $header-height;
         display: flex;
         justify-content: flex-start;
-        align-items: flex-start;
+        align-items: center;
         padding: $padding;
         top: 0;
         width: 100%;
+        padding-bottom: 40px;
         h2 {
           color: $secondary;
           margin: 0;
