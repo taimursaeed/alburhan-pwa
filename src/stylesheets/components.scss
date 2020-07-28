@@ -46,7 +46,10 @@ label {
     display: flex;
     flex-flow: column nowrap;
     overflow: hidden;
-    margin-bottom: 1.6em;
+    margin-bottom: 1.2em;
+    &:last-child {
+      margin-bottom: 0;
+    }
     .checkbox {
       font-size: 0.8em;
       &:first-child {
@@ -73,27 +76,32 @@ label {
     }
     &.card-fajar {
       .head {
-        background: url(../images/fajar-bg.svg) top left / cover no-repeat;
+        background: $fajar url(../images/fajar-bg.svg) bottom left / auto
+          no-repeat;
       }
     }
     &.card-zuhar {
       .head {
-        background: url(../images/zuhar-bg.svg) top left / cover no-repeat;
+        background: $zuhar url(../images/zuhar-bg.svg) bottom left / auto
+          no-repeat;
       }
     }
     &.card-asar {
       .head {
-        background: url(../images/asar-bg.svg) top left / cover no-repeat;
+        background: $asar url(../images/asar-bg.svg) bottom left / auto
+          no-repeat;
       }
     }
     &.card-maghrib {
       .head {
-        background: url(../images/maghrib-bg.svg) top left / cover no-repeat;
+        background: $maghrib url(../images/maghrib-bg.svg) bottom left / auto
+          no-repeat;
       }
     }
     &.card-isha {
       .head {
-        background: url(../images/isha-bg.svg) top left / cover no-repeat;
+        background: $isha url(../images/isha-bg.svg) bottom left / auto
+          no-repeat;
       }
     }
   }

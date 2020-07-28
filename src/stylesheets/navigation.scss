@@ -19,6 +19,7 @@
     align-items: center;
     display: flex;
     flex-flow: column nowrap;
+    transition: all 0.6s ease;
     &.active {
       color: $brand;
       background: rgba($brand, 0.12);
