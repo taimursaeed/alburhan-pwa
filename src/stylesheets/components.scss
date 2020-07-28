@@ -11,6 +11,10 @@ input {
   height: 48px;
   line-height: 48px;
   padding: 0 20px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+label {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 .btn {
   border-radius: $border-radius;
@@ -22,5 +26,173 @@ input {
   background: lighten($brand, 10%);
   &:hover {
     background: lighten($brand, 8%);
+  }
+}
+
+.card {
+  background: $secondary;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
+  border-radius: $border-radius * 2;
+  .head {
+    padding: $padding;
+  }
+  .body {
+    padding: 8px;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+  }
+  &.card-namaz {
+    display: flex;
+    flex-flow: column nowrap;
+    overflow: hidden;
+    margin-bottom: 1.6em;
+    .checkbox {
+      font-size: 0.8em;
+      &:first-child {
+        margin-right: 0;
+      }
+      &:last-child {
+        margin-left: 0;
+      }
+    }
+    .head {
+      h3 {
+        font-size: 2.4em;
+        font-weight: 400;
+        margin: 0;
+        text-shadow: 0 2px 1px rgba(0, 0, 0, 0.16);
+        color: white;
+        .required {
+          font-size: 0.6em;
+          vertical-align: top;
+          right: -10px;
+          position: relative;
+        }
+      }
+    }
+    &.card-fajar {
+      .head {
+        background: url(../images/fajar-bg.svg) top left / cover no-repeat;
+      }
+    }
+    &.card-zuhar {
+      .head {
+        background: url(../images/zuhar-bg.svg) top left / cover no-repeat;
+      }
+    }
+    &.card-asar {
+      .head {
+        background: url(../images/asar-bg.svg) top left / cover no-repeat;
+      }
+    }
+    &.card-maghrib {
+      .head {
+        background: url(../images/maghrib-bg.svg) top left / cover no-repeat;
+      }
+    }
+    &.card-isha {
+      .head {
+        background: url(../images/isha-bg.svg) top left / cover no-repeat;
+      }
+    }
+  }
+}
+
+.checkbox {
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  font-size: 1em;
+  margin: 8px 2px;
+  input {
+    box-shadow: none;
+    display: none;
+    &:checked {
+      ~ .checkbox-text {
+        &:before {
+          font-family: "iconfonts";
+          content: "\ea07";
+        }
+      }
+    }
+  }
+
+  .checkbox-text {
+    background: rgba($checkbox-bg, 0.2);
+    border-radius: 8px;
+    padding: 10px 30px 10px 8px;
+    line-height: 1;
+    position: relative;
+    display: inline-block;
+    &:before {
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      font-size: 0.5em;
+      width: 16px;
+      height: 16px;
+      line-height: 16px;
+      text-align: center;
+      color: white;
+      background: white;
+      border-radius: 4px;
+      cursor: pointer;
+      content: "";
+      transform: translateY(-50%);
+    }
+  }
+  &.bajamat {
+    input {
+      &:checked {
+        ~ .checkbox-text {
+          background: rgba($bajamat, 0.2);
+          color: $bajamat;
+          &:before {
+            background: $bajamat;
+          }
+        }
+      }
+    }
+  }
+  &.akeelay {
+    input {
+      &:checked {
+        ~ .checkbox-text {
+          background: rgba($akeelay, 0.2);
+          color: $akeelay;
+          &:before {
+            background: $akeelay;
+          }
+        }
+      }
+    }
+  }
+  &.qaza {
+    input {
+      &:checked {
+        ~ .checkbox-text {
+          background: rgba($qaza, 0.2);
+          color: $qaza;
+          &:before {
+            background: $qaza;
+          }
+        }
+      }
+    }
+  }
+  &.nahi {
+    input {
+      &:checked {
+        ~ .checkbox-text {
+          background: rgba($nahi, 0.2);
+          color: $nahi;
+          &:before {
+            background: $nahi;
+          }
+        }
+      }
+    }
   }
 }

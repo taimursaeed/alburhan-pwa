@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
 }
+::-webkit-scrollbar {
+  display: none;
+}
 html {
   overflow: hidden;
   font-size: $font-size;

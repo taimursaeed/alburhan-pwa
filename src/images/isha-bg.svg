@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="331" height="89.041" viewBox="0 0 331 89.041">
+  <g id="Group_130" data-name="Group 130" transform="translate(0 2.471)">
+    <path id="Path_204" data-name="Path 204" d="M0,0H331V89.041H0Z" transform="translate(0 -2.471)" fill="#0f1264"/>
+    <g id="moon_x5F_fill" transform="translate(43 17.341)">
+      <g id="Group_117" data-name="Group 117" transform="translate(0 0.001)">
+        <path id="Path_205" data-name="Path 205" d="M18.589,16.741A11.183,11.183,0,0,1,7.405,5.557,11.051,11.051,0,0,1,8.938,0a12.309,12.309,0,1,0,15.211,15.21A11.1,11.1,0,0,1,18.589,16.741Z" transform="translate(0 -0.001)" fill="#2e328a"/>
+      </g>
+    </g>
+    <path id="Intersection_5" data-name="Intersection 5" d="M902.38-5564.845v-23.879c2.138-.43,4.214-.882,6.269-1.336,9.647-2.127,18.813-4.253,31.51-3.935,24.663.62,40.615,16.095,56.856,16.043s21.092-10.856,42.281-10.752a118.412,118.412,0,0,1,43.333,8.829l32.521,15.03Z" transform="translate(-902.38 5651.188)" fill="#000230"/>
+  </g>
+</svg>
