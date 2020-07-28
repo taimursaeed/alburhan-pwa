@@ -2,42 +2,13 @@
   height: 100%;
   position: relative;
   z-index: 1;
-  &.logged-in {
-    .page-section {
-      padding: 0 20px 20px 20px;
-      header {
-        background: $brand;
-        margin: 0 -20px;
-        height: 150px;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 20px;
-        h2 {
-          color: $secondary;
-          margin: 0;
-          white-space: nowrap;
-          font-size: 1.8rem;
-          .icon {
-            background: lighten($brand, 20%);
-            width: 50px;
-            height: 50px;
-            border-radius: 60px;
-            display: inline-block;
-            text-align: center;
-            line-height: 50px;
-            margin-left: 15px;
-            vertical-align: middle;
-          }
-        }
-      }
-      .page-content {
-        padding: 20px 0;
-      }
-    }
-  }
   display: flex;
   transition: transform 0.3s ease;
+  &.logged-in {
+    .page-section {
+      padding: 0 $padding;
+    }
+  }
   .page {
     flex: 0 0 100%;
     height: calc(100% - #{$nav-height});
@@ -58,6 +29,52 @@
         color: $secondary;
         margin: 0;
         font-size: 3rem;
+      }
+    }
+    .page-section {
+      height: calc(100% + #{$nav-height});
+      overflow-y: auto;
+      header {
+        position: fixed;
+        background: $brand;
+        margin: 0 -#{$padding};
+        height: $header-height;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: $padding;
+        top: 0;
+        width: 100%;
+        h2 {
+          color: $secondary;
+          margin: 0;
+          white-space: nowrap;
+          font-size: 1.8rem;
+          .icon {
+            background: lighten($brand, 20%);
+            width: 50px;
+            height: 50px;
+            border-radius: 60px;
+            display: inline-block;
+            text-align: center;
+            line-height: 50px;
+            margin-left: 15px;
+            vertical-align: middle;
+          }
+        }
+      }
+      .page-content {
+        min-height: 100%;
+        padding: $padding $padding $nav-height + 10px $padding;
+        margin-top: $header-height - 20px;
+        background: $secondary;
+        margin-left: -$padding;
+        margin-right: -$padding;
+        box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.16);
+        z-index: 1;
+        position: relative;
+        border-top-left-radius: $border-radius * 3;
+        border-top-right-radius: $border-radius * 3;
       }
     }
   }
