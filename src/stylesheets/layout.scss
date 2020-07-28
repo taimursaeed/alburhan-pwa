@@ -67,7 +67,7 @@
       }
       .page-content {
         min-height: 100%;
-        padding: $padding $padding $nav-height + $padding $padding;
+        padding: $padding + 10 $padding $nav-height + $padding $padding;
         margin-top: $header-height - 20px;
         background: $secondary;
         margin-left: -$padding;
