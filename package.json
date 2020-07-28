@@ -85,6 +85,7 @@
     "ftp-deploy": "^2.3.3",
     "iconfont-plugin-webpack": "^1.1.4",
     "jquery": "^3.4.1",
+    "litepicker": "^1.5.7",
     "normalize.css": "^8.0.1",
     "reset-css": "^4.0.1",
     "sanitize.css": "^11.0.0",

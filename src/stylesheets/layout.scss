@@ -91,3 +91,19 @@
     margin-bottom: 20px;
   }
 }
+
+.calendar-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  .input-group {
+    flex: 1;
+    input {
+      font-size: 1.2em;
+    }
+  }
+  label {
+    margin-left: 16px;
+  }
+}

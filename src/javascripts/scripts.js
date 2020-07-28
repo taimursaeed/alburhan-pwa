@@ -1,3 +1,5 @@
+import Litepicker from "litepicker";
+
 const pageContainer = document.querySelector(".page-container");
 const pages = document.querySelectorAll(".page-container>.page");
 const nav = document.querySelector(".nav");
@@ -36,4 +38,9 @@ loginBtn.addEventListener("click", (e) => {
   moveToPage(1);
   pageContainer.classList.add("logged-in");
   nav.classList.remove("hide");
+});
+
+const picker = new Litepicker({
+  element: document.getElementById("litepicker"),
+  startDate: new Date()
 });
