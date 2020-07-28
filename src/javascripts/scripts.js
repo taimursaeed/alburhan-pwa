@@ -42,5 +42,6 @@ loginBtn.addEventListener("click", (e) => {
 
 const picker = new Litepicker({
   element: document.getElementById("litepicker"),
-  startDate: new Date()
+  startDate: new Date(),
+  maxDate: new Date()
 });
