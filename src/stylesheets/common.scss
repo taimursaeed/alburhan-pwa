@@ -77,3 +77,23 @@ p {
     opacity: 0.8;
   }
 }
+.loader {
+  border: 0.2em solid $secondary;
+  border-top: 0.2em solid $brand;
+  border-radius: 50%;
+  width: 3em;
+  height: 3em;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  font-size: 1em;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.16);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

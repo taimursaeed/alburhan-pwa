@@ -4,6 +4,7 @@ const pageContainer = document.querySelector(".page-container");
 const pages = document.querySelectorAll(".page-container>.page");
 const nav = document.querySelector(".nav");
 const navLinks = document.querySelectorAll(".nav>button");
+const namazCards = document.querySelectorAll(".card-namaz");
 let pageNo;
 
 // General
@@ -43,5 +44,18 @@ loginBtn.addEventListener("click", (e) => {
 const picker = new Litepicker({
   element: document.getElementById("litepicker"),
   startDate: new Date(),
-  maxDate: new Date()
+  maxDate: new Date(),
+  onSelect: dateSelected,
 });
+
+function dateSelected() {
+  namazCards.forEach((ele) => {
+    ele.classList.add("loading");
+    ele.insertAdjacentHTML(
+      "beforeend",
+      `<div class="loader-wrap"><div class="loader"></div></div>`
+    );
+  });
+
+  //TODO: fetch namaz record of corresponding date
+}
