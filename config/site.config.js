@@ -30,7 +30,7 @@ const config = {
   dev_host: 'localhost',
 
   // Local development port
-  port: process.env.PORT || 8000,
+  port: process.env.PORT || 8050,
 
   // Advanced configuration, edit with caution!
   env: process.env.NODE_ENV,
@@ -41,7 +41,9 @@ const config = {
     dist: 'dist',
   },
   package: JSON.parse(
-    fs.readFileSync(path.join(ROOT, '/package.json'), { encoding: 'utf-8' }),
+    fs.readFileSync(path.join(ROOT, '/package.json'), {
+      encoding: 'utf-8'
+    }),
   ),
 };
 
