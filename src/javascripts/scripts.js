@@ -7,6 +7,16 @@ const navLinks = document.querySelectorAll(".nav>button");
 const namazCards = document.querySelectorAll(".card-namaz");
 let pageNo;
 
+auth.onAuthStateChanged(user => {
+  if (user) {
+    moveToPage(1);
+    pageContainer.classList.add("logged-in");
+    nav.classList.remove("hide");
+  } else {
+    console.log('user logged out');
+  }
+});
+
 // General
 function moveToPage(p) {
   pageContainer.style.transform = `translateX(${p}00%)`;
@@ -35,7 +45,13 @@ navLinks.forEach((ele) => {
 // Login
 const loginBtn = document.querySelector("#loginBtn");
 loginBtn.addEventListener("click", (e) => {
-  //TODO: api handling
+
+  const email = loginForm['login-email'].value;
+  const password = loginForm['login-password'].value;
+  auth.signInWithEmailAndPassword(email, password).then(cred => {
+    console.log(cred.user);
+  });
+
   moveToPage(1);
   pageContainer.classList.add("logged-in");
   nav.classList.remove("hide");

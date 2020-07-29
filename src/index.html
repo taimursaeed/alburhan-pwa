@@ -1,179 +1,196 @@
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
-    />
-    <title>Alburhan PWA</title>
-    <meta name="description" content="" />
-    <link rel="manifest" href="images/favicons/manifest.json" />
-  </head>
 
-  <body>
-    <main class="page-container">
-      <div class="page page-login" data-page="login">
-        <img src="images/logo.png" alt="Logo" />
-        <h1>تعلق ایپ</h1>
-        <form id="loginForm" class="form-login">
-          <input type="text" placeholder="نام یا ای میل" />
-          <input type="password" placeholder="پاس ورڈ" />
-          <button class="btn btn-secondary" id="loginBtn" type="button">
-            لاگ ان کریں
-          </button>
-        </form>
-      </div>
-      <div class="page" data-page="namaz">
-        <section class="page-section">
-          <header>
-            <h2><span class="icon rug"></span>نمازوں کی ادائیگی</h2>
-          </header>
-          <div class="page-content">
-            <div class="calendar-wrap">
-              <label>تاریخ </label>
-              <span class="input-group">
-                <span class="icon calendar"> </span>
-                <input type="text" id="litepicker" />
-              </span>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Alburhan PWA</title>
+  <meta name="description" content="" />
+  <link rel="manifest" href="images/favicons/manifest.json" />
+</head>
+
+<body>
+  <main class="page-container">
+    <div class="page page-login" data-page="login">
+      <img src="images/logo.png" alt="Logo" />
+      <h1>تعلق ایپ</h1>
+      <form id="loginForm" class="form-login">
+        <input type="text" id="login-email" placeholder="نام یا ای میل" />
+        <input type="password" id="login-password" placeholder="پاس ورڈ" />
+        <button class="btn btn-secondary" id="loginBtn" type="button">
+          لاگ ان کریں
+        </button>
+      </form>
+    </div>
+    <div class="page" data-page="namaz">
+      <section class="page-section">
+        <header>
+          <h2><span class="icon rug"></span>نمازوں کی ادائیگی</h2>
+        </header>
+        <div class="page-content">
+          <div class="calendar-wrap">
+            <label>تاریخ </label>
+            <span class="input-group">
+              <span class="icon calendar"> </span>
+              <input type="text" id="litepicker" />
+            </span>
+          </div>
+          <div class="card card-namaz card-fajar">
+            <div class="head">
+              <h3>فجر <span class="required">*</span></h3>
             </div>
-            <div class="card card-namaz card-fajar">
-              <div class="head">
-                <h3>فجر <span class="required">*</span></h3>
-              </div>
-              <div class="body">
-                <label class="checkbox bajamat">
-                  <input type="radio" value="bajamat" name="fajar" />
-                  <span class="checkbox-text">باجمات</span>
-                </label>
-                <label class="checkbox akeelay">
-                  <input type="radio" value="akeelay" name="fajar" />
-                  <span class="checkbox-text">اکیلے</span>
-                </label>
-                <label class="checkbox qaza">
-                  <input type="radio" value="qaza" name="fajar" />
-                  <span class="checkbox-text">قضہ</span>
-                </label>
-                <label class="checkbox nahi">
-                  <input type="radio" value="nahi" name="fajar" />
-                  <span class="checkbox-text">نہی ادا کی</span>
-                </label>
-              </div>
-            </div>
-            <div class="card card-namaz card-zuhar">
-              <div class="head">
-                <h3>ظہر <span class="required">*</span></h3>
-              </div>
-              <div class="body">
-                <label class="checkbox bajamat">
-                  <input type="radio" value="bajamat" name="zuhar" />
-                  <span class="checkbox-text">باجمات</span>
-                </label>
-                <label class="checkbox akeelay">
-                  <input type="radio" value="akeelay" name="zuhar" />
-                  <span class="checkbox-text">اکیلے</span>
-                </label>
-                <label class="checkbox qaza">
-                  <input type="radio" value="qaza" name="zuhar" />
-                  <span class="checkbox-text">قضہ</span>
-                </label>
-                <label class="checkbox nahi">
-                  <input type="radio" value="nahi" name="zuhar" />
-                  <span class="checkbox-text">نہی ادا کی</span>
-                </label>
-              </div>
-            </div>
-            <div class="card card-namaz card-asar">
-              <div class="head">
-                <h3>عصر<span class="required">*</span></h3>
-              </div>
-              <div class="body">
-                <label class="checkbox bajamat">
-                  <input type="radio" value="bajamat" name="asar" />
-                  <span class="checkbox-text">باجمات</span>
-                </label>
-                <label class="checkbox akeelay">
-                  <input type="radio" value="akeelay" name="asar" />
-                  <span class="checkbox-text">اکیلے</span>
-                </label>
-                <label class="checkbox qaza">
-                  <input type="radio" value="qaza" name="asar" />
-                  <span class="checkbox-text">قضہ</span>
-                </label>
-                <label class="checkbox nahi">
-                  <input type="radio" value="nahi" name="asar" />
-                  <span class="checkbox-text">نہی ادا کی</span>
-                </label>
-              </div>
-            </div>
-            <div class="card card-namaz card-maghrib">
-              <div class="head">
-                <h3>مغرب <span class="required">*</span></h3>
-              </div>
-              <div class="body">
-                <label class="checkbox bajamat">
-                  <input type="radio" value="bajamat" name="maghrib" />
-                  <span class="checkbox-text">باجمات</span>
-                </label>
-                <label class="checkbox akeelay">
-                  <input type="radio" value="akeelay" name="maghrib" />
-                  <span class="checkbox-text">اکیلے</span>
-                </label>
-                <label class="checkbox qaza">
-                  <input type="radio" value="qaza" name="maghrib" />
-                  <span class="checkbox-text">قضہ</span>
-                </label>
-                <label class="checkbox nahi">
-                  <input type="radio" value="nahi" name="maghrib" />
-                  <span class="checkbox-text">نہی ادا کی</span>
-                </label>
-              </div>
-            </div>
-            <div class="card card-namaz card-isha">
-              <div class="head">
-                <h3>عشاء <span class="required">*</span></h3>
-              </div>
-              <div class="body">
-                <label class="checkbox bajamat">
-                  <input type="radio" value="bajamat" name="isha" />
-                  <span class="checkbox-text">باجمات</span>
-                </label>
-                <label class="checkbox akeelay">
-                  <input type="radio" value="akeelay" name="isha" />
-                  <span class="checkbox-text">اکیلے</span>
-                </label>
-                <label class="checkbox qaza">
-                  <input type="radio" value="qaza" name="isha" />
-                  <span class="checkbox-text">قضہ</span>
-                </label>
-                <label class="checkbox nahi">
-                  <input type="radio" value="nahi" name="isha" />
-                  <span class="checkbox-text">نہی ادا کی</span>
-                </label>
-              </div>
+            <div class="body">
+              <label class="checkbox bajamat">
+                <input type="radio" value="bajamat" name="fajar" />
+                <span class="checkbox-text">باجمات</span>
+              </label>
+              <label class="checkbox akeelay">
+                <input type="radio" value="akeelay" name="fajar" />
+                <span class="checkbox-text">اکیلے</span>
+              </label>
+              <label class="checkbox qaza">
+                <input type="radio" value="qaza" name="fajar" />
+                <span class="checkbox-text">قضہ</span>
+              </label>
+              <label class="checkbox nahi">
+                <input type="radio" value="nahi" name="fajar" />
+                <span class="checkbox-text">نہی ادا کی</span>
+              </label>
             </div>
           </div>
-        </section>
-      </div>
-      <div class="page" data-page="home">
-        <section class="page-section">
-          <header>
-            <h2>ھوم</h2>
-          </header>
-          <div class="page-content">
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit
-              minima, non alias aperiam temporibus exercitationem autem nobis
-              cupiditate velit, eum voluptatum qui facilis quia odit rem,
-              doloremque sit similique eligendi.
-            </p>
+          <div class="card card-namaz card-zuhar">
+            <div class="head">
+              <h3>ظہر <span class="required">*</span></h3>
+            </div>
+            <div class="body">
+              <label class="checkbox bajamat">
+                <input type="radio" value="bajamat" name="zuhar" />
+                <span class="checkbox-text">باجمات</span>
+              </label>
+              <label class="checkbox akeelay">
+                <input type="radio" value="akeelay" name="zuhar" />
+                <span class="checkbox-text">اکیلے</span>
+              </label>
+              <label class="checkbox qaza">
+                <input type="radio" value="qaza" name="zuhar" />
+                <span class="checkbox-text">قضہ</span>
+              </label>
+              <label class="checkbox nahi">
+                <input type="radio" value="nahi" name="zuhar" />
+                <span class="checkbox-text">نہی ادا کی</span>
+              </label>
+            </div>
           </div>
-        </section>
-      </div>
-    </main>
-    <nav class="nav hide">
-      <button class="btn-nav icon rug active" id="namaz">نماز</button>
-      <button class="btn-nav icon home" id="home">ھوم</button>
-    </nav>
-  </body>
+          <div class="card card-namaz card-asar">
+            <div class="head">
+              <h3>عصر<span class="required">*</span></h3>
+            </div>
+            <div class="body">
+              <label class="checkbox bajamat">
+                <input type="radio" value="bajamat" name="asar" />
+                <span class="checkbox-text">باجمات</span>
+              </label>
+              <label class="checkbox akeelay">
+                <input type="radio" value="akeelay" name="asar" />
+                <span class="checkbox-text">اکیلے</span>
+              </label>
+              <label class="checkbox qaza">
+                <input type="radio" value="qaza" name="asar" />
+                <span class="checkbox-text">قضہ</span>
+              </label>
+              <label class="checkbox nahi">
+                <input type="radio" value="nahi" name="asar" />
+                <span class="checkbox-text">نہی ادا کی</span>
+              </label>
+            </div>
+          </div>
+          <div class="card card-namaz card-maghrib">
+            <div class="head">
+              <h3>مغرب <span class="required">*</span></h3>
+            </div>
+            <div class="body">
+              <label class="checkbox bajamat">
+                <input type="radio" value="bajamat" name="maghrib" />
+                <span class="checkbox-text">باجمات</span>
+              </label>
+              <label class="checkbox akeelay">
+                <input type="radio" value="akeelay" name="maghrib" />
+                <span class="checkbox-text">اکیلے</span>
+              </label>
+              <label class="checkbox qaza">
+                <input type="radio" value="qaza" name="maghrib" />
+                <span class="checkbox-text">قضہ</span>
+              </label>
+              <label class="checkbox nahi">
+                <input type="radio" value="nahi" name="maghrib" />
+                <span class="checkbox-text">نہی ادا کی</span>
+              </label>
+            </div>
+          </div>
+          <div class="card card-namaz card-isha">
+            <div class="head">
+              <h3>عشاء <span class="required">*</span></h3>
+            </div>
+            <div class="body">
+              <label class="checkbox bajamat">
+                <input type="radio" value="bajamat" name="isha" />
+                <span class="checkbox-text">باجمات</span>
+              </label>
+              <label class="checkbox akeelay">
+                <input type="radio" value="akeelay" name="isha" />
+                <span class="checkbox-text">اکیلے</span>
+              </label>
+              <label class="checkbox qaza">
+                <input type="radio" value="qaza" name="isha" />
+                <span class="checkbox-text">قضہ</span>
+              </label>
+              <label class="checkbox nahi">
+                <input type="radio" value="nahi" name="isha" />
+                <span class="checkbox-text">نہی ادا کی</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="page" data-page="home">
+      <section class="page-section">
+        <header>
+          <h2>ھوم</h2>
+        </header>
+        <div class="page-content">
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit
+            minima, non alias aperiam temporibus exercitationem autem nobis
+            cupiditate velit, eum voluptatum qui facilis quia odit rem,
+            doloremque sit similique eligendi.
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+  <nav class="nav hide">
+    <button class="btn-nav icon rug active" id="namaz">نماز</button>
+    <button class="btn-nav icon home" id="home">ھوم</button>
+  </nav>
+  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBH8xreI4K6syvoRSyzl2iS0Vqbt0QGN0c",
+      authDomain: "qa-taluq-alburhan.firebaseapp.com",
+      databaseURL: "https://qa-taluq-alburhan.firebaseio.com",
+      projectId: "qa-taluq-alburhan"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+  </script>
+  <script src="javascripts/scripts.js"></script>
+</body>
+
 </html>
