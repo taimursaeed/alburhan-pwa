@@ -63,15 +63,17 @@ const picker = new Litepicker({
   maxDate: new Date(),
   onSelect: dateSelected,
 });
+window.timestamp = new Date();
 
 function dateSelected() {
-  namazCards.forEach((ele) => {
-    ele.classList.add("loading");
-    ele.insertAdjacentHTML(
-      "beforeend",
-      `<div class="loader-wrap"><div class="loader"></div></div>`
-    );
-  });
+  window.timestamp = this.getDate();
+  // namazCards.forEach((ele) => {
+  //   ele.classList.add("loading");
+  //   ele.insertAdjacentHTML(
+  //     "beforeend",
+  //     `<div class="loader-wrap"><div class="loader"></div></div>`
+  //   );
+  // });
 
   //TODO: fetch namaz record of corresponding date
 }
