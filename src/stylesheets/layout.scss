@@ -81,6 +81,9 @@
         position: relative;
         border-top-left-radius: $border-radius * 3;
         border-top-right-radius: $border-radius * 3;
+        h3 {
+          margin-top: 0;
+        }
       }
     }
   }
