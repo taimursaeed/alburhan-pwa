@@ -48,6 +48,41 @@ const picker = new Litepicker({
   onSelect: dateSelected,
 });
 
+<<<<<<< HEAD
+=======
+const singleDayNamaz = new Litepicker({
+  element: document.getElementById("singleDayNamaz"),
+  maxDate: new Date(),
+  onSelect: function () {
+    this.options.element.parentElement.parentElement.parentElement
+      .querySelector(".placeholder")
+      .remove();
+    this.options.element.parentElement.parentElement.parentElement
+      .querySelectorAll(".summary")
+      .forEach((ele) => {
+        ele.classList.remove("hide");
+      });
+  },
+});
+
+const multipleDayNamaz = new Litepicker({
+  element: document.getElementById("multipleDayNamaz"),
+  startDate: new Date(),
+  maxDate: new Date(),
+  singleMode: false,
+  onSelect: function () {
+    this.options.element.parentElement.parentElement.parentElement
+      .querySelector(".placeholder")
+      .remove();
+    this.options.element.parentElement.parentElement.parentElement
+      .querySelectorAll(".summary")
+      .forEach((ele) => {
+        ele.classList.remove("hide");
+      });
+  },
+});
+
+>>>>>>> 35ffb38... -remove singledaynamaz value on load
 function dateSelected() {
   namazCards.forEach((ele) => {
     ele.classList.add("loading");
