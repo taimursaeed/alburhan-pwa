@@ -5,6 +5,8 @@ const pages = document.querySelectorAll(".page-container>.page");
 const nav = document.querySelector(".nav");
 const navLinks = document.querySelectorAll(".nav>button");
 const namazCards = document.querySelectorAll(".card-namaz");
+const tabLinks = document.querySelectorAll(".btn-tab");
+const tabContainer = document.querySelectorAll(".tab-content");
 let pageNo;
 
 // General
@@ -29,6 +31,25 @@ navLinks.forEach((ele) => {
       }
     });
     moveToPage(pageNo);
+  });
+});
+
+// Tabs
+
+tabLinks.forEach((ele) => {
+  ele.addEventListener("click", (e) => {
+    tabLinks.forEach((ele) => {
+      ele.classList.remove("active");
+    });
+    e.currentTarget.classList.add("active");
+    const tabId = e.currentTarget.id;
+    tabContainer.forEach((e, index) => {
+      if (e.getAttribute("data-tab") == tabId) {
+        e.classList.add("active");
+      } else {
+        e.classList.remove("active");
+      }
+    });
   });
 });
 
