@@ -71,7 +71,6 @@ const picker = new Litepicker({
 
 const singleDayNamaz = new Litepicker({
   element: document.getElementById("singleDayNamaz"),
-  startDate: new Date(),
   maxDate: new Date(),
   onSelect: function () {
     this.options.element.parentElement.parentElement.parentElement
