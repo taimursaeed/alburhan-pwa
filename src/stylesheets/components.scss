@@ -267,7 +267,7 @@ label {
   display: block;
   width: 90%;
   padding: 1em;
-  background: rgba($bajamat, 0.9);
+  background: rgba(darken($bajamat, 8%), 0.9);
   color: white;
   border-radius: $border-radius;
   left: 50%;
