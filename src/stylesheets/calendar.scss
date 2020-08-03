@@ -8,11 +8,11 @@
   --litepickerDayColor: #333;
   --litepickerDayColorHover: #{$brand};
   --litepickerDayIsTodayColor: #{$brand};
-  --litepickerDayIsInRange: #{rgba($brand, 0.2)};
+  --litepickerDayIsInRange: #bbdefb;
   --litepickerDayIsLockedColor: #9e9e9e;
   --litepickerDayIsBookedColor: #9e9e9e;
   --litepickerDayIsStartColor: #fff;
-  --litepickerDayIsStartBg: #{$brand};
+  --litepickerDayIsStartBg: red;
   --litepickerDayIsEndColor: #fff;
   --litepickerDayIsEndBg: #{$brand};
   --litepickerDayWidth: 38px;
