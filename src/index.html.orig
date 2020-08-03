@@ -1,27 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>Alburhan PWA</title>
-  <meta name="description" content="" />
-  <link rel="manifest" href="images/favicons/manifest.json" />
-</head>
-
-<body>
-  <main class="page-container">
-    <div class="page page-login" data-page="login">
-      <img src="images/logo.png" alt="Logo" />
-      <h1>تعلق ایپ</h1>
-      <form id="loginForm" class="form-login">
-        <input type="text" id="login-email" placeholder="نام یا ای میل" />
-        <input type="password" id="login-password" placeholder="پاس ورڈ" />
-        <button class="btn btn-secondary" id="loginBtn" type="button">
-          لاگ ان کریں
-        </button>
-      </form>
-    </div>
+<<<<<<< HEAD
+  <body>
+    <main class="page-container">
+      <div class="page page-login" data-page="login">
+        <img src="images/logo.png" alt="Logo" />
+        <h1>تعلق ایپ</h1>
+        <form id="loginForm" class="form-login">
+          <input type="text" placeholder="نام یا ای میل" />
+          <input type="password" placeholder="پاس ورڈ" />
+          <button class="btn btn-secondary" id="loginBtn" type="button">
+            لاگ ان کریں
+          </button>
+        </form>
+      </div>
       <div class="page" data-page="home">
         <section class="page-section">
           <header>
@@ -107,6 +100,40 @@
           </div>
         </section>
       </div>
+      <div class="page" data-page="namaz">
+        <section class="page-section">
+          <header>
+            <h2><span class="icon rug"></span>نمازوں کی ادائیگی</h2>
+          </header>
+          <div class="page-content">
+            <div class="calendar-wrap">
+              <label>تاریخ </label>
+              <span class="input-group">
+                <span class="icon calendar"> </span>
+                <input type="text" id="litepicker" />
+              </span>
+=======
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Alburhan PWA</title>
+  <meta name="description" content="" />
+  <link rel="manifest" href="images/favicons/manifest.json" />
+</head>
+
+<body>
+  <main class="page-container">
+    <div class="page page-login" data-page="login">
+      <img src="images/logo.png" alt="Logo" />
+      <h1>تعلق ایپ</h1>
+      <form id="loginForm" class="form-login">
+        <input type="text" id="login-email" placeholder="نام یا ای میل" />
+        <input type="password" id="login-password" placeholder="پاس ورڈ" />
+        <button class="btn btn-secondary" id="loginBtn" type="button">
+          لاگ ان کریں
+        </button>
+      </form>
+    </div>
     <div class="page" data-page="namaz">
       <section class="page-section">
         <header>
@@ -147,6 +174,7 @@
           <div class="card card-namaz card-zuhar">
             <div class="head">
               <h3>ظہر <span class="required">*</span></h3>
+>>>>>>> master-backend
             </div>
             <div class="body">
               <label class="checkbox bajamat">
@@ -213,6 +241,16 @@
               </label>
             </div>
           </div>
+<<<<<<< HEAD
+        </section>
+      </div>
+    </main>
+    <nav class="nav hide">
+      <button class="btn-nav icon home active" id="home">ھوم</button>
+      <button class="btn-nav icon rug" id="namaz">نماز</button>
+    </nav>
+  </body>
+=======
           <div class="card card-namaz card-isha">
             <div class="head">
               <h3>عشاء <span class="required">*</span></h3>
@@ -239,21 +277,21 @@
         </div>
       </section>
     </div>
-      <div class="page" data-page="home">
-        <section class="page-section">
-          <header>
-            <h2>ھوم</h2>
-          </header>
-          <div class="page-content">
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit
-              minima, non alias aperiam temporibus exercitationem autem nobis
-              cupiditate velit, eum voluptatum qui facilis quia odit rem,
-              doloremque sit similique eligendi.
-            </p>
-          </div>
-        </section>
-      </div>
+    <div class="page" data-page="home">
+      <section class="page-section">
+        <header>
+          <h2>ھوم</h2>
+        </header>
+        <div class="page-content">
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit
+            minima, non alias aperiam temporibus exercitationem autem nobis
+            cupiditate velit, eum voluptatum qui facilis quia odit rem,
+            doloremque sit similique eligendi.
+          </p>
+        </div>
+      </section>
+    </div>
   </main>
   <nav class="nav hide">
     <button class="btn-nav icon rug active" id="namaz">نماز</button>
@@ -280,4 +318,5 @@
   <script src="javascripts/events.js"></script>
 </body>
 
+>>>>>>> master-backend
 </html>

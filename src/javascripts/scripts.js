@@ -9,6 +9,16 @@ const tabLinks = document.querySelectorAll(".btn-tab");
 const tabContainer = document.querySelectorAll(".tab-content");
 let pageNo;
 
+auth.onAuthStateChanged(user => {
+  if (user) {
+    moveToPage(1);
+    pageContainer.classList.add("logged-in");
+    nav.classList.remove("hide");
+  } else {
+    console.log('user logged out');
+  }
+});
+
 // General
 function moveToPage(p) {
   pageContainer.style.transform = `translateX(${p}00%)`;
@@ -56,7 +66,13 @@ tabLinks.forEach((ele) => {
 // Login
 const loginBtn = document.querySelector("#loginBtn");
 loginBtn.addEventListener("click", (e) => {
-  //TODO: api handling
+
+  const email = loginForm['login-email'].value;
+  const password = loginForm['login-password'].value;
+  auth.signInWithEmailAndPassword(email, password).then(cred => {
+    console.log(cred.user);
+  });
+
   moveToPage(1);
   pageContainer.classList.add("logged-in");
   nav.classList.remove("hide");
@@ -68,6 +84,7 @@ const picker = new Litepicker({
   maxDate: new Date(),
   onSelect: dateSelected,
 });
+window.timestamp = new Date();
 
 const singleDayNamaz = new Litepicker({
   element: document.getElementById("singleDayNamaz"),
@@ -102,13 +119,14 @@ const multipleDayNamaz = new Litepicker({
 });
 
 function dateSelected() {
-  namazCards.forEach((ele) => {
-    ele.classList.add("loading");
-    ele.insertAdjacentHTML(
-      "beforeend",
-      `<div class="loader-wrap"><div class="loader"></div></div>`
-    );
-  });
+  window.timestamp = this.getDate();
+  // namazCards.forEach((ele) => {
+  //   ele.classList.add("loading");
+  //   ele.insertAdjacentHTML(
+  //     "beforeend",
+  //     `<div class="loader-wrap"><div class="loader"></div></div>`
+  //   );
+  // });
 
   //TODO: fetch namaz record of corresponding date
 }
