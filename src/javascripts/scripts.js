@@ -90,16 +90,7 @@ window.timestamp = new Date();
 const singleDayNamaz = new Litepicker({
   element: document.getElementById("singleDayNamaz"),
   maxDate: new Date(),
-  onSelect: function () {
-    this.options.element.parentElement.parentElement.parentElement
-      .querySelector(".placeholder")
-      .remove();
-    this.options.element.parentElement.parentElement.parentElement
-      .querySelectorAll(".summary")
-      .forEach((ele) => {
-        ele.classList.remove("hide");
-      });
-  },
+  onSelect: fetchSingleDayData
 });
 
 const multipleDayNamaz = new Litepicker({
