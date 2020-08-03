@@ -70,12 +70,13 @@ loginBtn.addEventListener("click", (e) => {
   const email = loginForm['login-email'].value;
   const password = loginForm['login-password'].value;
   auth.signInWithEmailAndPassword(email, password).then(cred => {
-    console.log(cred.user);
-  });
-
-  moveToPage(1);
-  pageContainer.classList.add("logged-in");
-  nav.classList.remove("hide");
+      moveToPage(1);
+      pageContainer.classList.add("logged-in");
+      nav.classList.remove("hide");
+    })
+    .catch(() => {
+      document.getElementById("loginError").classList.remove("hide");
+    });
 });
 
 const picker = new Litepicker({
