@@ -48,8 +48,6 @@ const picker = new Litepicker({
   onSelect: dateSelected,
 });
 
-<<<<<<< HEAD
-=======
 const singleDayNamaz = new Litepicker({
   element: document.getElementById("singleDayNamaz"),
   maxDate: new Date(),
@@ -82,7 +80,6 @@ const multipleDayNamaz = new Litepicker({
   },
 });
 
->>>>>>> 35ffb38... -remove singledaynamaz value on load
 function dateSelected() {
   namazCards.forEach((ele) => {
     ele.classList.add("loading");
