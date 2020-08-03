@@ -1,6 +1,118 @@
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
 
+<<<<<<< HEAD
+  <body>
+    <main class="page-container">
+      <div class="page page-login" data-page="login">
+        <img src="images/logo.png" alt="Logo" />
+        <h1>تعلق ایپ</h1>
+        <form id="loginForm" class="form-login">
+          <input type="text" placeholder="نام یا ای میل" />
+          <input type="password" placeholder="پاس ورڈ" />
+          <button class="btn btn-secondary" id="loginBtn" type="button">
+            لاگ ان کریں
+          </button>
+        </form>
+      </div>
+      <div class="page" data-page="home">
+        <section class="page-section">
+          <header>
+            <h2><span class="icon home"></span>ھوم</h2>
+          </header>
+          <div class="page-content">
+            <div class="tabs">
+              <div class="tab-buttons">
+                <button class="btn btn-primary btn-tab active" id="singleNamaz">
+                  ایک دن کی نمازیں
+                </button>
+                <button class="btn btn-primary btn-tab" id="multipleNamaz">
+                  متعدد دنوں کی نمازیں
+                </button>
+              </div>
+              <div class="tab-content active" data-tab="singleNamaz">
+                <label>تاریخ </label>
+                <div class="calendar-wrap mt-1">
+                  <span class="input-group">
+                    <span class="icon calendar"> </span>
+                    <input type="text" id="singleDayNamaz" />
+                  </span>
+                </div>
+                <div class="summaries" id="singleDaySummary">
+                  <p class="placeholder">تاریخ کا انتخاب کریں</p>
+                  <div class="summary bajamat hide">
+                    <p class="title">فجر</p>
+                    <h4 class="value">باجمات</h4>
+                  </div>
+                  <div class="summary akeelay hide">
+                    <p class="title">ظہر</p>
+                    <h4 class="value">اکیلے</h4>
+                  </div>
+                  <div class="summary qaza hide">
+                    <p class="title">عصر</p>
+                    <h4 class="value">قضہ</h4>
+                  </div>
+                  <div class="summary nahi hide">
+                    <p class="title">مغرب</p>
+                    <h4 class="value">نہی ادا کی</h4>
+                  </div>
+                  <div class="summary bajamat hide">
+                    <p class="title">عشاء</p>
+                    <h4 class="value">باجمات</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-content" data-tab="multipleNamaz">
+                <label>تاریخ کی حدود </label>
+                <div class="calendar-wrap mt-1 mb-1">
+                  <span class="input-group">
+                    <span class="icon calendar"> </span>
+                    <input type="text" id="multipleDayNamaz" />
+                  </span>
+                </div>
+                <div class="tags">
+                  <button class="btn btn-primary">کل</button>
+                  <button class="btn btn-primary">3 دن</button>
+                  <button class="btn btn-primary">7 دن</button>
+                  <button class="btn btn-primary">1 مہینہ</button>
+                </div>
+                <div class="summaries" id="multipleDaySummary">
+                  <p class="placeholder">تاریخ کا انتخاب کریں</p>
+                  <div class="summary bajamat hide">
+                    <p class="title">باجمات</p>
+                    <h4 class="value">50%</h4>
+                  </div>
+                  <div class="summary akeelay hide">
+                    <p class="title">اکیلے</p>
+                    <h4 class="value">30%</h4>
+                  </div>
+                  <div class="summary qaza hide">
+                    <p class="title">قضہ</p>
+                    <h4 class="value">10%</h4>
+                  </div>
+                  <div class="summary nahi hide">
+                    <p class="title">نہی ادا کی</p>
+                    <h4 class="value">10%</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="page" data-page="namaz">
+        <section class="page-section">
+          <header>
+            <h2><span class="icon rug"></span>نمازوں کی ادائیگی</h2>
+          </header>
+          <div class="page-content">
+            <div class="calendar-wrap">
+              <label>تاریخ </label>
+              <span class="input-group">
+                <span class="icon calendar"> </span>
+                <input type="text" id="litepicker" />
+              </span>
+=======
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -20,95 +132,7 @@
         <button class="btn btn-secondary" id="loginBtn" type="button">
           لاگ ان کریں
         </button>
-        <div class="error">
-          دیا گیا ای میل یا پاس ورڈ غلط ہے. دوبارہ کوشش کریں
-        </div>
       </form>
-    </div>
-    <div class="page" data-page="home">
-      <section class="page-section">
-        <header>
-          <h2><span class="icon home"></span>ھوم</h2>
-        </header>
-        <div class="page-content">
-          <div class="tabs">
-            <div class="tab-buttons">
-              <button class="btn btn-primary btn-tab active" id="singleNamaz">
-                ایک دن کی نمازیں
-              </button>
-              <button class="btn btn-primary btn-tab" id="multipleNamaz">
-                متعدد دنوں کی نمازیں
-              </button>
-            </div>
-            <div class="tab-content active" data-tab="singleNamaz">
-              <label>تاریخ </label>
-              <div class="calendar-wrap mt-1">
-                <span class="input-group">
-                  <span class="icon calendar"> </span>
-                  <input type="text" id="singleDayNamaz" />
-                </span>
-              </div>
-              <div class="summaries" id="singleDaySummary">
-                <p class="placeholder">تاریخ کا انتخاب کریں</p>
-                <div class="summary bajamat hide">
-                  <p class="title">فجر</p>
-                  <h4 class="value">باجمات</h4>
-                </div>
-                <div class="summary akeelay hide">
-                  <p class="title">ظہر</p>
-                  <h4 class="value">اکیلے</h4>
-                </div>
-                <div class="summary qaza hide">
-                  <p class="title">عصر</p>
-                  <h4 class="value">قضہ</h4>
-                </div>
-                <div class="summary nahi hide">
-                  <p class="title">مغرب</p>
-                  <h4 class="value">نہی ادا کی</h4>
-                </div>
-                <div class="summary bajamat hide">
-                  <p class="title">عشاء</p>
-                  <h4 class="value">باجمات</h4>
-                </div>
-              </div>
-            </div>
-            <div class="tab-content" data-tab="multipleNamaz">
-              <label>تاریخ کی حدود </label>
-              <div class="calendar-wrap mt-1 mb-1">
-                <span class="input-group">
-                  <span class="icon calendar"> </span>
-                  <input type="text" id="multipleDayNamaz" />
-                </span>
-              </div>
-              <div class="tags">
-                <button class="btn btn-primary">کل</button>
-                <button class="btn btn-primary">3 دن</button>
-                <button class="btn btn-primary">7 دن</button>
-                <button class="btn btn-primary">1 مہینہ</button>
-              </div>
-              <div class="summaries" id="multipleDaySummary">
-                <p class="placeholder">تاریخ کا انتخاب کریں</p>
-                <div class="summary bajamat hide">
-                  <p class="title">باجمات</p>
-                  <h4 class="value">50%</h4>
-                </div>
-                <div class="summary akeelay hide">
-                  <p class="title">اکیلے</p>
-                  <h4 class="value">30%</h4>
-                </div>
-                <div class="summary qaza hide">
-                  <p class="title">قضہ</p>
-                  <h4 class="value">10%</h4>
-                </div>
-                <div class="summary nahi hide">
-                  <p class="title">نہی ادا کی</p>
-                  <h4 class="value">10%</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
     <div class="page" data-page="namaz">
       <section class="page-section">
@@ -150,6 +174,7 @@
           <div class="card card-namaz card-zuhar">
             <div class="head">
               <h3>ظہر <span class="required">*</span></h3>
+>>>>>>> master-backend
             </div>
             <div class="body">
               <label class="checkbox bajamat">
@@ -216,6 +241,16 @@
               </label>
             </div>
           </div>
+<<<<<<< HEAD
+        </section>
+      </div>
+    </main>
+    <nav class="nav hide">
+      <button class="btn-nav icon home active" id="home">ھوم</button>
+      <button class="btn-nav icon rug" id="namaz">نماز</button>
+    </nav>
+  </body>
+=======
           <div class="card card-namaz card-isha">
             <div class="head">
               <h3>عشاء <span class="required">*</span></h3>
@@ -262,10 +297,6 @@
     <button class="btn-nav icon rug active" id="namaz">نماز</button>
     <button class="btn-nav icon home" id="home">ھوم</button>
   </nav>
-  <div class="notification">
-    <span class="icon tick"></span>
-    <span class="text"> تبدیلیاں محفوظ </span>
-  </div>
   <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
@@ -287,4 +318,5 @@
   <script src="javascripts/events.js"></script>
 </body>
 
+>>>>>>> master-backend
 </html>

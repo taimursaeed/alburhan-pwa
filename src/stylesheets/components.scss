@@ -42,8 +42,19 @@ label {
 .btn {
   border-radius: $border-radius;
   height: 44px;
+  padding: 0 1em;
   transition: all 0.3s ease;
 }
+
+.btn-primary {
+  background: rgba($checkbox-bg, 0.16);
+  &:hover,
+  &.active {
+    color: $brand;
+    background: rgba($brand, 0.2);
+  }
+}
+
 .btn-secondary {
   color: white;
   background: lighten($brand, 10%);
@@ -199,10 +210,10 @@ label {
     input {
       &:checked {
         ~ .checkbox-text {
-          background: rgba($bajamat, 0.2);
-          color: $bajamat;
+          background: rgba($brand, 0.2);
+          color: $brand;
           &:before {
-            background: $bajamat;
+            background: $brand;
           }
         }
       }
@@ -212,10 +223,10 @@ label {
     input {
       &:checked {
         ~ .checkbox-text {
-          background: rgba($akeelay, 0.2);
-          color: $akeelay;
+          background: rgba($brand, 0.2);
+          color: $brand;
           &:before {
-            background: $akeelay;
+            background: $brand;
           }
         }
       }
@@ -225,10 +236,10 @@ label {
     input {
       &:checked {
         ~ .checkbox-text {
-          background: rgba($qaza, 0.2);
-          color: $qaza;
+          background: rgba($brand, 0.2);
+          color: $brand;
           &:before {
-            background: $qaza;
+            background: $brand;
           }
         }
       }
@@ -238,10 +249,10 @@ label {
     input {
       &:checked {
         ~ .checkbox-text {
-          background: rgba($nahi, 0.2);
-          color: $nahi;
+          background: rgba($brand, 0.2);
+          color: $brand;
           &:before {
-            background: $nahi;
+            background: $brand;
           }
         }
       }
@@ -270,5 +281,103 @@ label {
   &.show {
     opacity: 1;
     transform: translate(-50%, 0);
+  }
+}
+.summaries {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  .placeholder {
+    text-align: center;
+    flex: 1;
+    font-style: italic;
+  }
+  .summary {
+    flex: 0 0 48%;
+    border-radius: 16px;
+    margin-bottom: 10px;
+    color: white;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+    &:nth-child(5) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .title {
+      font-size: 1em;
+      margin: 0;
+      padding: 0.3em 1em;
+    }
+    .value {
+      font-size: 1.6em;
+      margin: 1em 0;
+      text-align: center;
+      line-height: 1;
+    }
+    &.bajamat {
+      background: $bajamat;
+      .title {
+        background: darken($bajamat, 4%);
+      }
+    }
+    &.akeelay {
+      background: $akeelay;
+      .title {
+        background: darken($akeelay, 4%);
+      }
+    }
+    &.qaza {
+      background: $qaza;
+      .title {
+        background: darken($qaza, 4%);
+      }
+    }
+    &.nahi {
+      background: $nahi;
+      .title {
+        background: darken($nahi, 4%);
+      }
+    }
+  }
+}
+
+.tabs {
+  .tab-buttons {
+    display: flex;
+    border-radius: $border-radius;
+    overflow: hidden;
+    .btn-tab {
+      flex: 1;
+      // border-right: 1px solid rgba($checkbox-bg, 0.32);
+      border-radius: 0;
+      &:first-child {
+        border-right: none;
+      }
+    }
+  }
+  .tab-content {
+    padding-top: 2em;
+    &:not(.active) {
+      display: none;
+    }
+  }
+}
+.tags {
+  display: inline-flex;
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 2em;
+  button {
+    flex: 0 0 60px;
+    white-space: nowrap;
+    padding: 0.8em 1em;
+    margin-left: 0.5em;
+    border-radius: $border-radius * 3;
+    &.active {
+      color: $brand;
+      background: rgba($brand, 0.2);
+    }
   }
 }
