@@ -41,16 +41,8 @@ Array.from(input).forEach(function (element) {
 
 
 async function fetchSingleDayData() {
-
-
   var day = this.getDate().toDateString();
   var _userId = auth.currentUser.uid;
-
-  // document.querySelector(".placeholder").remove();
-  // document.querySelectorAll(".summary").forEach((ele) => {
-  //   ele.classList.remove("hide");
-  // });
-
   let document = await db.collection("mamulat").where("userId", "==", _userId).where("id", "==", day).get().then(snapshot => {
     setupSingleDay(snapshot.docs);
   });
@@ -88,8 +80,7 @@ const setupSingleDay = (data) => {
       <p class="title">عشاء</p>
       <h4 class="value">${getText(namaz.isha)}</h4>
     </div>
-  </div>
-    `;
+  </div>`;
     html += single;
   });
   singleDay.innerHTML = html;

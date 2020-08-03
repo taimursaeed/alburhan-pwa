@@ -112,13 +112,4 @@ const multipleDayNamaz = new Litepicker({
 
 function dateSelected() {
   window.timestamp = this.getDate();
-  // namazCards.forEach((ele) => {
-  //   ele.classList.add("loading");
-  //   ele.insertAdjacentHTML(
-  //     "beforeend",
-  //     `<div class="loader-wrap"><div class="loader"></div></div>`
-  //   );
-  // });
-
-  //TODO: fetch namaz record of corresponding date
 }
