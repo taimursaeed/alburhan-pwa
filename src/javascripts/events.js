@@ -1,4 +1,6 @@
 var input = document.querySelectorAll('input');
+var notification = document.querySelector('.notification');
+var notificationTimer;
 
 async function mamulatFunction() {
   var _name = this.name;
@@ -6,13 +8,18 @@ async function mamulatFunction() {
   var date = window.timestamp;
   var id = window.timestamp.toString();
 
+  notification.classList.remove('show');
+
   if (_name !== "") {
     let document = await firebase.firestore().collection("mamulat").doc(id).get();
     if (document && document.exists) {
       await document.ref.update({
         [_name]: _value
       });
-      alert("Updated successfully!");
+      notification.classList.add('show');
+      notificationTimer=setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3000);
     } else {
       await document.ref.set({
         id: id,
@@ -21,8 +28,11 @@ async function mamulatFunction() {
       }, {
         merge: true
       });
-      alert("Added successfully!");
-    }
+      notification.classList.add('show');
+      notificationTimer=setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3000);
+     }
   }
 }
 

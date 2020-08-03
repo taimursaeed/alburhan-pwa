@@ -248,3 +248,27 @@ label {
     }
   }
 }
+
+.notification {
+  position: absolute;
+  bottom: $nav-height + 10;
+  z-index: 1;
+  display: block;
+  width: 90%;
+  padding: 1em;
+  background: rgba($bajamat, 0.9);
+  color: white;
+  border-radius: $border-radius;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, $nav-height * 2);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.5);
+  .icon {
+    margin-left: 1em;
+  }
+  &.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}

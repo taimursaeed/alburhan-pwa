@@ -90,6 +90,13 @@
   input {
     margin-bottom: 20px;
   }
+  .error {
+    padding: 1em;
+    margin-top: 1em;
+    border-radius: $border-radius;
+    background: lighten($nahi, 12%);
+    color: white;
+  }
 }
 
 .calendar-wrap {
