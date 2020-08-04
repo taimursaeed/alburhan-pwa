@@ -130,4 +130,5 @@ const multipleDayNamaz = new Litepicker({
 
 function dateSelected() {
   window.timestamp = this.getDate();
+  fetchSingleDayDataForNamazScreen();
 }

@@ -38,6 +38,13 @@ Array.from(input).forEach(function (element) {
   element.addEventListener('click', mamulatFunction);
 });
 
+async function fetchSingleDayDataForNamazScreen() {
+  var day = window.timestamp.toDateString();
+  var _userId = auth.currentUser.uid;
+  await db.collection("mamulat").where("userId", "==", _userId).where("id", "==", day).get().then(snapshot => {
+    setupNamazScreen(snapshot.docs);
+  });
+}
 
 async function fetchSingleDayData() {
   var day = this.getDate().toDateString();
@@ -192,6 +199,338 @@ const setupMultiDays = (data) => {
 </div>`;
   html += multi;
   multiDays.innerHTML = html;
+}
+
+const setupNamazScreen = (data) => {
+  const fajarCard = document.querySelector('.card-fajar');
+  const zuharCard = document.querySelector('.card-zuhar');
+  const asarCard = document.querySelector('.card-asar');
+  const maghribCard = document.querySelector('.card-maghrib');
+  const ishaCard = document.querySelector('.card-isha');
+  let html = '';
+  data.forEach(doc => {
+    const namaz = doc.data();
+    var jamat, akeelay, qaza, nahi;
+    if (namaz.fajar != null) {
+      switch (namaz.fajar) {
+        case "3":
+          jamat = "checked";
+          akeelay = "";
+          qaza = "";
+          nahi = "";
+          break;
+        case "2":
+          jamat = "";
+          akeelay = "checked";
+          qaza = "";
+          nahi = "";
+          break;
+        case "1":
+          jamat = "";
+          akeelay = "";
+          qaza = "checked";
+          nahi = "";
+          break;
+        case "0":
+          jamat = "";
+          akeelay = "";
+          qaza = "";
+          nahi = "checked";
+          break;
+        default:
+          jamat = "";
+          akeelay = "";
+          qaza = "";
+          nahi = "";
+          break;
+      }
+    } else {
+      jamat = "";
+      akeelay = "";
+      qaza = "";
+      nahi = "";
+    }
+    const fajarCardHtml = `<div class="head">
+    <h3>فجر<span class="required">*</span></h3>
+  </div>
+  <div class="body">
+    <label class="checkbox bajamat">
+      <input type="radio" value="3" name="fajar" ${jamat} />
+      <span class="checkbox-text">باجمات</span>
+    </label>
+    <label class="checkbox akeelay">
+      <input type="radio" value="2" name="fajar"  ${akeelay} />
+      <span class="checkbox-text">اکیلے</span>
+    </label>
+    <label class="checkbox qaza">
+      <input type="radio" value="1" name="fajar"  ${qaza} />
+      <span class="checkbox-text">قضہ</span>
+    </label>
+    <label class="checkbox nahi">
+      <input type="radio" value="0" name="fajar" ${nahi}  />
+      <span class="checkbox-text">نہی ادا کی</span>
+    </label>
+  </div>`;
+    html += fajarCardHtml;
+    if (data.length > 0) fajarCard.innerHTML = html;
+    html = '';
+    if (namaz.zuhar != null) {
+      switch (namaz.zuhar) {
+        case "3":
+          jamat = "checked";
+          akeelay = "";
+          qaza = "";
+          nahi = "";
+          break;
+        case "2":
+          jamat = "";
+          akeelay = "checked";
+          qaza = "";
+          nahi = "";
+          break;
+        case "1":
+          jamat = "";
+          akeelay = "";
+          qaza = "checked";
+          nahi = "";
+          break;
+        case "0":
+          jamat = "";
+          akeelay = "";
+          qaza = "";
+          nahi = "checked";
+          break;
+        default:
+          jamat = "";
+          akeelay = "";
+          qaza = "";
+          nahi = "";
+          break;
+      }
+    } else {
+      jamat = "";
+      akeelay = "";
+      qaza = "";
+      nahi = "";
+    }
+    const zuharCardHtml = `<div class="head">
+    <h3>ظہر<span class="required">*</span></h3>
+  </div>
+  <div class="body">
+    <label class="checkbox bajamat">
+      <input type="radio" value="3" name="zuhar"   ${jamat}/>
+      <span class="checkbox-text">باجمات</span>
+    </label>
+    <label class="checkbox akeelay">
+      <input type="radio" value="2" name="zuhar"   ${akeelay}/>
+      <span class="checkbox-text">اکیلے</span>
+    </label>
+    <label class="checkbox qaza">
+      <input type="radio" value="1" name="zuhar"  ${qaza} />
+      <span class="checkbox-text">قضہ</span>
+    </label>
+    <label class="checkbox nahi">
+      <input type="radio" value="0" name="zuhar"   ${nahi}/>
+      <span class="checkbox-text">نہی ادا کی</span>
+    </label>
+  </div>`;
+    html += zuharCardHtml;
+    if (data.length > 0) zuharCard.innerHTML = html;
+    html = '';
+    if (namaz.asar != null) {
+      switch (namaz.asar) {
+        case "3":
+          jamat = "checked";
+          akeelay = "";
+          qaza = "";
+          nahi = "";
+          break;
+        case "2":
+          jamat = "";
+          akeelay = "checked";
+          qaza = "";
+          nahi = "";
+          break;
+        case "1":
+          jamat = "";
+          akeelay = "";
+          qaza = "checked";
+          nahi = "";
+          break;
+        case "0":
+          jamat = "";
+          akeelay = "";
+          qaza = "";
+          nahi = "checked";
+          break;
+        default:
+          jamat = "";
+          akeelay = "";
+          qaza = "";
+          nahi = "";
+          break;
+      }
+    } else {
+      jamat = "";
+      akeelay = "";
+      qaza = "";
+      nahi = "";
+    }
+    const asarCardHtml = `<div class="head">
+    <h3>عصر<span class="required">*</span></h3>
+  </div>
+  <div class="body">
+    <label class="checkbox bajamat">
+      <input type="radio" value="3" name="asar"  ${jamat}/>
+      <span class="checkbox-text">باجمات</span>
+    </label>
+    <label class="checkbox akeelay">
+      <input type="radio" value="2" name="asar"  ${akeelay}/>
+      <span class="checkbox-text">اکیلے</span>
+    </label>
+    <label class="checkbox qaza">
+      <input type="radio" value="1" name="asar" ${qaza} />
+      <span class="checkbox-text">قضہ</span>
+    </label>
+    <label class="checkbox nahi">
+      <input type="radio" value="0" name="asar"  ${nahi}/>
+      <span class="checkbox-text">نہی ادا کی</span>
+    </label>
+  </div>`;
+    html += asarCardHtml;
+    if (data.length > 0) asarCard.innerHTML = html;
+
+    html = '';
+    if (namaz.maghrib != null) {
+      switch (namaz.maghrib) {
+        case "3":
+          jamat = "checked";
+          akeelay = "";
+          qaza = "";
+          nahi = "";
+          break;
+        case "2":
+          jamat = "";
+          akeelay = "checked";
+          qaza = "";
+          nahi = "";
+          break;
+        case "1":
+          jamat = "";
+          akeelay = "";
+          qaza = "checked";
+          nahi = "";
+          break;
+        case "0":
+          jamat = "";
+          akeelay = "";
+          qaza = "";
+          nahi = "checked";
+          break;
+        default:
+          jamat = "";
+          akeelay = "";
+          qaza = "";
+          nahi = "";
+          break;
+      }
+    } else {
+      jamat = "";
+      akeelay = "";
+      qaza = "";
+      nahi = "";
+    }
+    const maghribCardHtml = `<div class="head">
+    <h3>مغرب<span class="required">*</span></h3>
+  </div>
+  <div class="body">
+    <label class="checkbox bajamat">
+      <input type="radio" value="3" name="maghrib"  ${jamat}/>
+      <span class="checkbox-text">باجمات</span>
+    </label>
+    <label class="checkbox akeelay">
+      <input type="radio" value="2" name="maghrib"  ${akeelay}/>
+      <span class="checkbox-text">اکیلے</span>
+    </label>
+    <label class="checkbox qaza">
+      <input type="radio" value="1" name="maghrib" ${qaza} />
+      <span class="checkbox-text">قضہ</span>
+    </label>
+    <label class="checkbox nahi">
+      <input type="radio" value="0" name="maghrib"  ${nahi}/>
+      <span class="checkbox-text">نہی ادا کی</span>
+    </label>
+  </div>`;
+    html += maghribCardHtml;
+    if (data.length > 0) maghribCard.innerHTML = html;
+
+    html = '';
+    if (namaz.isha != null) {
+      switch (namaz.isha) {
+        case "3":
+          jamat = "checked";
+          akeelay = "";
+          qaza = "";
+          nahi = "";
+          break;
+        case "2":
+          jamat = "";
+          akeelay = "checked";
+          qaza = "";
+          nahi = "";
+          break;
+        case "1":
+          jamat = "";
+          akeelay = "";
+          qaza = "checked";
+          nahi = "";
+          break;
+        case "0":
+          jamat = "";
+          akeelay = "";
+          qaza = "";
+          nahi = "checked";
+          break;
+        default:
+          jamat = "";
+          akeelay = "";
+          qaza = "";
+          nahi = "";
+          break;
+      }
+    } else {
+      jamat = "";
+      akeelay = "";
+      qaza = "";
+      nahi = "";
+    }
+    const ishaCardHtml = `<div class="head">
+    <h3>عشاء<span class="required">*</span></h3>
+  </div>
+  <div class="body">
+    <label class="checkbox bajamat">
+      <input type="radio" value="3" name="isha"  ${jamat}/>
+      <span class="checkbox-text">باجمات</span>
+    </label>
+    <label class="checkbox akeelay">
+      <input type="radio" value="2" name="isha"  ${akeelay}/>
+      <span class="checkbox-text">اکیلے</span>
+    </label>
+    <label class="checkbox qaza">
+      <input type="radio" value="1" name="isha" ${qaza} />
+      <span class="checkbox-text">قضہ</span>
+    </label>
+    <label class="checkbox nahi">
+      <input type="radio" value="0" name="isha"  ${nahi}/>
+      <span class="checkbox-text">نہی ادا کی</span>
+    </label>
+  </div>`;
+    html += ishaCardHtml;
+    if (data.length > 0) ishaCard.innerHTML = html;
+  });
+  Array.from(input).forEach(function (element) {
+    element.addEventListener('click', mamulatFunction);
+  });
 }
 
 const setupSingleDay = (data) => {
