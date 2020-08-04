@@ -9,7 +9,6 @@ async function mamulatFunction() {
   var id = window.timestamp.toDateString();
   var _userId = auth.currentUser.uid;
   notification.classList.remove('show');
-
   if (_name !== "") {
     let document = await db.collection("mamulat").where("userId", "==", _userId).where("id", "==", id).get();
     if (document && (document.docs.length > 0) && document.docs[0].data().userId == _userId) {
@@ -43,11 +42,157 @@ Array.from(input).forEach(function (element) {
 async function fetchSingleDayData() {
   var day = this.getDate().toDateString();
   var _userId = auth.currentUser.uid;
-  let document = await db.collection("mamulat").where("userId", "==", _userId).where("id", "==", day).get().then(snapshot => {
+  await db.collection("mamulat").where("userId", "==", _userId).where("id", "==", day).get().then(snapshot => {
     setupSingleDay(snapshot.docs);
   });
 }
 
+async function fetchMultipleDaysData(startDate, endDate) {
+  var _userId = auth.currentUser.uid;
+  await db.collection("mamulat").where("userId", "==", _userId).where("date", ">=", startDate).where("date", "<=", endDate).get().then(snapshot => {
+    setupMultiDays(snapshot.docs);
+  });
+}
+
+const setupMultiDays = (data) => {
+  let html = '';
+  const multiDays = document.querySelector('.multiDays');
+  if (data.length == 0) {
+    const noRecord = `<p class="placeholder">تاریخ کا انتخاب کریں</p>`;
+    html += noRecord;
+  }
+  var _jamat = 0;
+  var _akelay = 0;
+  var _qaza = 0;
+  var _nahi = 0;
+  var _totalNamazein = data.length * 5;
+  data.forEach(doc => {
+    const namaz = doc.data();
+    if (namaz.fajar != null) {
+      switch (namaz.fajar) {
+        case "3":
+          _jamat++;
+          break;
+        case "2":
+          _akelay++;
+          break;
+        case "1":
+          _qaza++;
+          break;
+        case "0":
+          _nahi++;
+          break;
+        default:
+          _nahi++;
+          break;
+      }
+    } else {
+      _nahi++;
+    }
+    if (namaz.zuhar != null) {
+      switch (namaz.zuhar) {
+        case "3":
+          _jamat++;
+          break;
+        case "2":
+          _akelay++;
+          break;
+        case "1":
+          _qaza++;
+          break;
+        case "0":
+          _nahi++;
+          break;
+        default:
+          _nahi++;
+          break;
+      }
+    } else {
+      _nahi++;
+    }
+    if (namaz.asar != null) {
+      switch (namaz.asar) {
+        case "3":
+          _jamat++;
+          break;
+        case "2":
+          _akelay++;
+          break;
+        case "1":
+          _qaza++;
+          break;
+        case "0":
+          _nahi++;
+          break;
+        default:
+          _nahi++;
+          break;
+      }
+    } else {
+      _nahi++;
+    }
+    if (namaz.maghrib != null) {
+      switch (namaz.maghrib) {
+        case "3":
+          _jamat++;
+          break;
+        case "2":
+          _akelay++;
+          break;
+        case "1":
+          _qaza++;
+          break;
+        case "0":
+          _nahi++;
+          break;
+        default:
+          _nahi++;
+          break;
+      }
+    } else {
+      _nahi++;
+    }
+    if (namaz.isha != null) {
+      switch (namaz.isha) {
+        case "3":
+          _jamat++;
+          break;
+        case "2":
+          _akelay++;
+          break;
+        case "1":
+          _qaza++;
+          break;
+        case "0":
+          _nahi++;
+          break;
+        default:
+          _nahi++;
+          break;
+      }
+    } else {
+      _nahi++;
+    }
+  });
+  const multi = `<div class="summary bajamat">
+  <p class="title">باجمات</p>
+  <h4 class="value">${ (_jamat/_totalNamazein)*100 }%</h4>
+</div>
+<div class="summary akeelay">
+  <p class="title">اکیلے</p>
+  <h4 class="value">${ (_akelay/_totalNamazein)*100 }%</h4>
+</div>
+<div class="summary qaza">
+  <p class="title">قضہ</p>
+  <h4 class="value">${ (_qaza/_totalNamazein)*100 }%</h4>
+</div>
+<div class="summary nahi">
+  <p class="title">نہی ادا کی</p>
+  <h4 class="value">${ (_nahi/_totalNamazein)*100 }%</h4>
+</div>`;
+  html += multi;
+  multiDays.innerHTML = html;
+}
 
 const setupSingleDay = (data) => {
   let html = '';
@@ -112,6 +257,6 @@ function getText(namaz) {
     case "0":
       return "نہی ادا کی";
     default:
-      return "باجمات";
+      return "نہی ادا کی";
   }
 }

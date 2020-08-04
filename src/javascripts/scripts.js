@@ -98,16 +98,9 @@ const multipleDayNamaz = new Litepicker({
   startDate: new Date(),
   maxDate: new Date(),
   singleMode: false,
-  onSelect: function () {
-    this.options.element.parentElement.parentElement.parentElement
-      .querySelector(".placeholder")
-      .remove();
-    this.options.element.parentElement.parentElement.parentElement
-      .querySelectorAll(".summary")
-      .forEach((ele) => {
-        ele.classList.remove("hide");
-      });
-  },
+  onSelect: function (start, end) {
+    fetchMultipleDaysData(start, end);
+  }
 });
 
 function dateSelected() {
