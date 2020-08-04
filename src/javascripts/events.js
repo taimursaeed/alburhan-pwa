@@ -4,12 +4,12 @@ var notificationTimer;
 
 async function mamulatFunction() {
   var _name = this.name;
-  var _value = this.value;
-  var date = window.timestamp;
-  var id = window.timestamp.toDateString();
-  var _userId = auth.currentUser.uid;
-  notification.classList.remove('show');
-  if (_name !== "") {
+  if (_name != undefined && _name !== "") {
+    var _value = this.value;
+    var date = window.timestamp;
+    var id = window.timestamp.toDateString();
+    var _userId = auth.currentUser.uid;
+    notification.classList.remove('show');
     let document = await db.collection("mamulat").where("userId", "==", _userId).where("id", "==", id).get();
     if (document && (document.docs.length > 0) && document.docs[0].data().userId == _userId) {
       await document.docs[0].ref.update({
@@ -33,6 +33,9 @@ async function mamulatFunction() {
     }
   }
 }
+
+//document.body.addEventListener('click', mamulatFunction);
+
 
 Array.from(input).forEach(function (element) {
   element.addEventListener('click', mamulatFunction);
@@ -67,121 +70,122 @@ const setupMultiDays = (data) => {
   if (data.length == 0) {
     const noRecord = `<p class="placeholder">تاریخ کا انتخاب کریں</p>`;
     html += noRecord;
-  }
-  var _jamat = 0;
-  var _akelay = 0;
-  var _qaza = 0;
-  var _nahi = 0;
-  var _totalNamazein = data.length * 5;
-  data.forEach(doc => {
-    const namaz = doc.data();
-    if (namaz.fajar != null) {
-      switch (namaz.fajar) {
-        case "3":
-          _jamat++;
-          break;
-        case "2":
-          _akelay++;
-          break;
-        case "1":
-          _qaza++;
-          break;
-        case "0":
-          _nahi++;
-          break;
-        default:
-          _nahi++;
-          break;
+    multiDays.innerHTML = html;
+  } else {
+    var _jamat = 0;
+    var _akelay = 0;
+    var _qaza = 0;
+    var _nahi = 0;
+    var _totalNamazein = data.length * 5;
+    data.forEach(doc => {
+      const namaz = doc.data();
+      if (namaz.fajar != null) {
+        switch (namaz.fajar) {
+          case "3":
+            _jamat++;
+            break;
+          case "2":
+            _akelay++;
+            break;
+          case "1":
+            _qaza++;
+            break;
+          case "0":
+            _nahi++;
+            break;
+          default:
+            _nahi++;
+            break;
+        }
+      } else {
+        _nahi++;
       }
-    } else {
-      _nahi++;
-    }
-    if (namaz.zuhar != null) {
-      switch (namaz.zuhar) {
-        case "3":
-          _jamat++;
-          break;
-        case "2":
-          _akelay++;
-          break;
-        case "1":
-          _qaza++;
-          break;
-        case "0":
-          _nahi++;
-          break;
-        default:
-          _nahi++;
-          break;
+      if (namaz.zuhar != null) {
+        switch (namaz.zuhar) {
+          case "3":
+            _jamat++;
+            break;
+          case "2":
+            _akelay++;
+            break;
+          case "1":
+            _qaza++;
+            break;
+          case "0":
+            _nahi++;
+            break;
+          default:
+            _nahi++;
+            break;
+        }
+      } else {
+        _nahi++;
       }
-    } else {
-      _nahi++;
-    }
-    if (namaz.asar != null) {
-      switch (namaz.asar) {
-        case "3":
-          _jamat++;
-          break;
-        case "2":
-          _akelay++;
-          break;
-        case "1":
-          _qaza++;
-          break;
-        case "0":
-          _nahi++;
-          break;
-        default:
-          _nahi++;
-          break;
+      if (namaz.asar != null) {
+        switch (namaz.asar) {
+          case "3":
+            _jamat++;
+            break;
+          case "2":
+            _akelay++;
+            break;
+          case "1":
+            _qaza++;
+            break;
+          case "0":
+            _nahi++;
+            break;
+          default:
+            _nahi++;
+            break;
+        }
+      } else {
+        _nahi++;
       }
-    } else {
-      _nahi++;
-    }
-    if (namaz.maghrib != null) {
-      switch (namaz.maghrib) {
-        case "3":
-          _jamat++;
-          break;
-        case "2":
-          _akelay++;
-          break;
-        case "1":
-          _qaza++;
-          break;
-        case "0":
-          _nahi++;
-          break;
-        default:
-          _nahi++;
-          break;
+      if (namaz.maghrib != null) {
+        switch (namaz.maghrib) {
+          case "3":
+            _jamat++;
+            break;
+          case "2":
+            _akelay++;
+            break;
+          case "1":
+            _qaza++;
+            break;
+          case "0":
+            _nahi++;
+            break;
+          default:
+            _nahi++;
+            break;
+        }
+      } else {
+        _nahi++;
       }
-    } else {
-      _nahi++;
-    }
-    if (namaz.isha != null) {
-      switch (namaz.isha) {
-        case "3":
-          _jamat++;
-          break;
-        case "2":
-          _akelay++;
-          break;
-        case "1":
-          _qaza++;
-          break;
-        case "0":
-          _nahi++;
-          break;
-        default:
-          _nahi++;
-          break;
+      if (namaz.isha != null) {
+        switch (namaz.isha) {
+          case "3":
+            _jamat++;
+            break;
+          case "2":
+            _akelay++;
+            break;
+          case "1":
+            _qaza++;
+            break;
+          case "0":
+            _nahi++;
+            break;
+          default:
+            _nahi++;
+            break;
+        }
+      } else {
+        _nahi++;
       }
-    } else {
-      _nahi++;
-    }
-  });
-  const multi = `<div class="summary bajamat">
+    });
+    const multi = `<div class="summary bajamat">
   <p class="title">باجمات</p>
   <h4 class="value">${ (_jamat/_totalNamazein)*100 }%</h4>
 </div>
@@ -197,8 +201,9 @@ const setupMultiDays = (data) => {
   <p class="title">نہی ادا کی</p>
   <h4 class="value">${ (_nahi/_totalNamazein)*100 }%</h4>
 </div>`;
-  html += multi;
-  multiDays.innerHTML = html;
+    html += multi;
+    multiDays.innerHTML = html;
+  }
 }
 
 const setupNamazScreen = (data) => {
@@ -208,6 +213,9 @@ const setupNamazScreen = (data) => {
   const maghribCard = document.querySelector('.card-maghrib');
   const ishaCard = document.querySelector('.card-isha');
   let html = '';
+  if (data.length == 0) {
+
+  }
   data.forEach(doc => {
     const namaz = doc.data();
     var jamat, akeelay, qaza, nahi;
@@ -528,9 +536,10 @@ const setupNamazScreen = (data) => {
     html += ishaCardHtml;
     if (data.length > 0) ishaCard.innerHTML = html;
   });
-  Array.from(input).forEach(function (element) {
-    element.addEventListener('click', mamulatFunction);
-  });
+
+  // Array.from(input).forEach(function (element) {
+  //   element.addEventListener('click', mamulatFunction);
+  // });
 }
 
 const setupSingleDay = (data) => {
