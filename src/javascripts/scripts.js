@@ -87,6 +87,31 @@ const picker = new Litepicker({
 });
 window.timestamp = new Date();
 
+document.getElementById("last3Days").addEventListener("click", (e) => {
+  var today = new Date();
+  var startDate = new Date();
+  startDate.setDate(today.getDate() - 3);
+  fetchMultipleDaysData(startDate, today)
+});
+document.getElementById("last7Days").addEventListener("click", (e) => {
+  var today = new Date();
+  var startDate = new Date();
+  startDate.setDate(today.getDate() - 7);
+  fetchMultipleDaysData(startDate, today)
+});
+document.getElementById("last30Days").addEventListener("click", (e) => {
+  var today = new Date();
+  var startDate = new Date();
+  startDate.setDate(today.getDate() - 30);
+  fetchMultipleDaysData(startDate, today)
+});
+document.getElementById("lastDay").addEventListener("click", (e) => {
+  var today = new Date();
+  var startDate = new Date();
+  startDate.setDate(today.getDate() - 1);
+  fetchMultipleDaysData(startDate, today)
+});
+
 const singleDayNamaz = new Litepicker({
   element: document.getElementById("singleDayNamaz"),
   maxDate: new Date(),
