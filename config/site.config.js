@@ -9,10 +9,10 @@ if (!ROOT) {
 
 const config = {
   // Your website's name, used for favicon meta tags
-  site_name: 'Alburhan PWA',
+  site_name: 'تعلق ایپ',
 
   // Your website's description, used for favicon meta tags
-  site_description: 'PWA for Alburhan Taluq initiative',
+  site_description: 'تعلق ایپ',
 
   // Your website's URL, used for sitemap
   site_url: 'https://alburhan.org/',

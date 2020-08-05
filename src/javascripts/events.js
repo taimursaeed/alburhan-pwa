@@ -33,10 +33,6 @@ async function mamulatFunction() {
     }
   }
 }
-
-//document.body.addEventListener('click', mamulatFunction);
-
-
 Array.from(input).forEach(function (element) {
   element.addEventListener('click', mamulatFunction);
 });
