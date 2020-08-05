@@ -352,10 +352,10 @@ const setupNamazScreen = (data) => {
   })
 
   const offerType = {
-    1:"nahi",
-    2:"qaza",
-    3:"akeelay",
-    4:"jamat",
+    0:"nahi",
+    1:"qaza",
+    2:"akeelay",
+    3:"bajamat",
   }
 
   data.forEach(doc => {
