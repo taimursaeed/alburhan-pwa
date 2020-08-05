@@ -323,19 +323,19 @@ const setupMultiDays = (data) => {
     });
     const multi = `<div class="summary bajamat">
   <p class="title">باجمات</p>
-  <h4 class="value">${ (_jamat/_totalNamazein)*100 }%</h4>
+  <h4 class="value">${ (Math.round((_jamat/_totalNamazein)*100)).toFixed(0) }%</h4>
 </div>
 <div class="summary akeelay">
   <p class="title">اکیلے</p>
-  <h4 class="value">${ (_akelay/_totalNamazein)*100 }%</h4>
+  <h4 class="value">${ (Math.round((_akelay/_totalNamazein)*100)).toFixed(0) }%</h4>
 </div>
 <div class="summary qaza">
   <p class="title">قضہ</p>
-  <h4 class="value">${ (_qaza/_totalNamazein)*100 }%</h4>
+  <h4 class="value">${ (Math.round((_qaza/_totalNamazein)*100)).toFixed(0) }%</h4>
 </div>
 <div class="summary nahi">
   <p class="title">نہی ادا کی</p>
-  <h4 class="value">${ (_nahi/_totalNamazein)*100 }%</h4>
+  <h4 class="value">${ (Math.round((_nahi/_totalNamazein)*100)).toFixed(0) }%</h4>
 </div>`;
     html += multi;
     multiDays.innerHTML = html;
