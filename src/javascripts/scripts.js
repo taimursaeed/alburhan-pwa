@@ -749,7 +749,7 @@ function getText(namaz) {
 async function registerSW() {
   if ('serviceWorker' in navigator) {
     try {
-      await navigator.serviceWorker.register('./sw.js');
+      await navigator.serviceWorker.register('./service-worker.js');;
     } catch (e) {
       alert('ServiceWorker registration failed. Sorry about that.');
     }
@@ -760,3 +760,9 @@ async function registerSW() {
 window.addEventListener('load', e => {
   registerSW();
 });
+// if ('serviceWorker' in navigator) {
+//   // Use the window load event to keep the page load performant
+//   window.addEventListener('load', () => {
+//     navigator.serviceWorker.register('../sw.js');
+//   });
+// }

@@ -3,7 +3,7 @@ const cssnano = require('cssnano');
 const glob = require('glob');
 const path = require('path');
 const fs = require('fs');
-
+const WorkboxPlugin = require('workbox-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const {
   CleanWebpackPlugin
@@ -154,10 +154,12 @@ const iconFonts = new IconfontPlugin({
     pattern: 'src/images/iconsvgs/**/*.svg', // required - watch these files to reload
     cwd: undefined // optional - current working dir for watching
   }
-})
+});
+const plg = new WorkboxPlugin.GenerateSW();
 
 module.exports = [
   clean,
+  plg,
   //stylelint,
   iconFonts,
   cssExtract,
