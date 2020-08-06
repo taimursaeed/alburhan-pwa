@@ -142,10 +142,12 @@ var input = document.querySelectorAll('input');
 var notification = document.querySelector('.notification');
 var notificationTimer;
 const singleDay = document.querySelector('.singleDay');
+const multiDays = document.querySelector('.multiDays');
 
 async function mamulatFunction() {
   var _name = this.name;
   if (_name != undefined && _name !== "") {
+    this.closest(".card-namaz").classList.add("loading");
     var _value = this.value;
     var date = window.timestamp;
     var id = window.timestamp.toDateString();
@@ -172,6 +174,7 @@ async function mamulatFunction() {
         notification.classList.remove('show');
       }, 3000);
     }
+    this.closest(".card-namaz").classList.remove("loading");
   }
 }
 Array.from(input).forEach(function (element) {
@@ -202,39 +205,42 @@ async function fetchSingleDayDataForNamazScreen() {
   var day = window.timestamp.toDateString();
   var _userId = auth.currentUser.uid;
 
-  handleLoader(namazCards,'add');
+  handleLoader(namazCards, 'add');
 
   await db.collection("mamulat").where("userId", "==", _userId).where("id", "==", day).get().then(snapshot => {
     setupNamazScreen(snapshot.docs);
   });
 
-  handleLoader(namazCards,'remove');
+  handleLoader(namazCards, 'remove');
 }
 
 async function fetchSingleDayData() {
   var day = this.getDate().toDateString();
   var _userId = auth.currentUser.uid;
 
-  handleLoader(singleDay,'add');
+  handleLoader(singleDay, 'add');
 
   await db.collection("mamulat").where("userId", "==", _userId).where("id", "==", day).get().then(snapshot => {
     setupSingleDay(snapshot.docs);
-  });
+  }).catch(() => {});
 
-  handleLoader(singleDay,'remove');
+  handleLoader(singleDay, 'remove');
 
 }
 
 async function fetchMultipleDaysData(startDate, endDate) {
   var _userId = auth.currentUser.uid;
+  handleLoader(multiDays, 'add');
+
   await db.collection("mamulat").where("userId", "==", _userId).where("date", ">=", startDate).where("date", "<=", endDate).get().then(snapshot => {
     setupMultiDays(snapshot.docs);
-  });
+  }).catch(() => {});
+  handleLoader(multiDays, 'remove');
+
 }
 
 const setupMultiDays = (data) => {
   let html = '';
-  const multiDays = document.querySelector('.multiDays');
   if (data.length == 0) {
     const noRecord = `<p class="placeholder">تاریخ کا انتخاب کریں</p>`;
     html += noRecord;
@@ -356,19 +362,19 @@ const setupMultiDays = (data) => {
     const multi = `<div class="summary bajamat">
   <p class="title">باجمات</p>
   <h4 class="value">${ (Math.round((_jamat/_totalNamazein)*100)).toFixed(0) }%</h4>
-</div>
+  <div class="loader-wrap"><div class="loader"></div></div></div>
 <div class="summary akeelay">
   <p class="title">اکیلے</p>
   <h4 class="value">${ (Math.round((_akelay/_totalNamazein)*100)).toFixed(0) }%</h4>
-</div>
+  <div class="loader-wrap"><div class="loader"></div></div></div>
 <div class="summary qaza">
   <p class="title">قضہ</p>
   <h4 class="value">${ (Math.round((_qaza/_totalNamazein)*100)).toFixed(0) }%</h4>
-</div>
+  <div class="loader-wrap"><div class="loader"></div></div></div>
 <div class="summary nahi">
   <p class="title">نہی ادا کی</p>
   <h4 class="value">${ (Math.round((_nahi/_totalNamazein)*100)).toFixed(0) }%</h4>
-</div>`;
+  <div class="loader-wrap"><div class="loader"></div></div></div>`;
     html += multi;
     multiDays.innerHTML = html;
   }
@@ -379,21 +385,21 @@ const setupNamazScreen = (data) => {
   const namazRadios = document.querySelectorAll('.card-namaz input');
 
   // reset radio buttons first
-  namazRadios.forEach((ele)=>{
+  namazRadios.forEach((ele) => {
     ele.checked = false;
   })
 
   const offerType = {
-    0:"nahi",
-    1:"qaza",
-    2:"akeelay",
-    3:"bajamat",
+    0: "nahi",
+    1: "qaza",
+    2: "akeelay",
+    3: "bajamat",
   }
 
   data.forEach(doc => {
     const namaz = doc.data();
     for (const property in namaz) {
-      if(allNamaz.includes(property)){
+      if (allNamaz.includes(property)) {
         console.log(`${property}: ${namaz[property]}`);
         document.querySelector(`.card-${property} .${offerType[namaz[property]]} input`).checked = true;
       }
