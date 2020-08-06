@@ -176,13 +176,27 @@ async function mamulatFunction() {
 Array.from(input).forEach(function (element) {
   element.addEventListener('click', mamulatFunction);
 });
+function handleLoader(elements, action) {
+  action == "add"
+    ? elements.forEach((item) => {
+        item.classList.add("loading");
+      })
+    : elements.forEach((item) => {
+        item.classList.remove("loading");
+      });
+}
 
 async function fetchSingleDayDataForNamazScreen() {
   var day = window.timestamp.toDateString();
   var _userId = auth.currentUser.uid;
+
+  handleLoader(namazCards,'add');
+
   await db.collection("mamulat").where("userId", "==", _userId).where("id", "==", day).get().then(snapshot => {
     setupNamazScreen(snapshot.docs);
   });
+
+  handleLoader(namazCards,'remove');
 }
 
 async function fetchSingleDayData() {
