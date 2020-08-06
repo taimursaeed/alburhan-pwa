@@ -394,7 +394,6 @@ const setupSingleDay = (data) => {
   data.forEach(doc => {
     const namaz = doc.data();
     const single = `
-    <div class="summaries" id="singleDaySummary">
     <div class="summary ${getColor(namaz.fajar)}">
       <p class="title">فجر</p>
       <h4 class="value">${getText(namaz.fajar)}</h4>
@@ -414,7 +413,6 @@ const setupSingleDay = (data) => {
     <div class="summary ${getColor(namaz.isha)}">
       <p class="title">عشاء</p>
       <h4 class="value">${getText(namaz.isha)}</h4>
-    </div>
   </div>`;
     html += single;
   });
