@@ -79,7 +79,7 @@ p {
 }
 .loader {
   display: none;
-  border: 0.2em solid $secondary;
+  border: 0.2em solid lighten($brand, 50);
   border-top: 0.2em solid $brand;
   border-radius: 50%;
   width: 2em;
@@ -87,7 +87,6 @@ p {
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
   font-size: 1em;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.16);
 }
 .loading {
   position: relative;
@@ -111,6 +110,9 @@ p {
     .loader {
       display: block;
     }
+  }
+  .placeholder {
+    display: none;
   }
 }
 

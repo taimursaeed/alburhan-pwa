@@ -141,6 +141,7 @@ function dateSelected() {
 var input = document.querySelectorAll('input');
 var notification = document.querySelector('.notification');
 var notificationTimer;
+const singleDay = document.querySelector('.singleDay');
 
 async function mamulatFunction() {
   var _name = this.name;
@@ -176,14 +177,25 @@ async function mamulatFunction() {
 Array.from(input).forEach(function (element) {
   element.addEventListener('click', mamulatFunction);
 });
+
 function handleLoader(elements, action) {
-  action == "add"
-    ? elements.forEach((item) => {
-        item.classList.add("loading");
-      })
-    : elements.forEach((item) => {
-        item.classList.remove("loading");
-      });
+  if (action == "add") {
+    if (NodeList.prototype.isPrototypeOf(elements)) { // IF node list then loop ELSE not
+      for (let i = 0; i < elements.length; i++) {
+        elements[i].classList.add("loading");
+      }
+    } else {
+      elements.classList.add("loading");
+    }
+  } else {
+    if (NodeList.prototype.isPrototypeOf(elements)) { // IF node list then loop ELSE not
+      for (let i = 0; i < elements.length; i++) {
+        elements[i].classList.remove("loading");
+      }
+    } else {
+      elements.classList.remove("loading");
+    }
+  }
 }
 
 async function fetchSingleDayDataForNamazScreen() {
@@ -202,9 +214,15 @@ async function fetchSingleDayDataForNamazScreen() {
 async function fetchSingleDayData() {
   var day = this.getDate().toDateString();
   var _userId = auth.currentUser.uid;
+
+  handleLoader(singleDay,'add');
+
   await db.collection("mamulat").where("userId", "==", _userId).where("id", "==", day).get().then(snapshot => {
     setupSingleDay(snapshot.docs);
   });
+
+  handleLoader(singleDay,'remove');
+
 }
 
 async function fetchMultipleDaysData(startDate, endDate) {
@@ -386,7 +404,6 @@ const setupNamazScreen = (data) => {
 
 const setupSingleDay = (data) => {
   let html = '';
-  const singleDay = document.querySelector('.singleDay');
   if (data.length == 0) {
     const noRecord = `<p class="placeholder">تاریخ کا انتخاب کریں</p>`;
     html += noRecord;
@@ -397,22 +414,27 @@ const setupSingleDay = (data) => {
     <div class="summary ${getColor(namaz.fajar)}">
       <p class="title">فجر</p>
       <h4 class="value">${getText(namaz.fajar)}</h4>
+      <div class="loader-wrap"><div class="loader"></div></div>
     </div>
     <div class="summary ${getColor(namaz.zuhar)}">
       <p class="title">ظہر</p>
       <h4 class="value">${getText(namaz.zuhar)}</h4>
+      <div class="loader-wrap"><div class="loader"></div></div>
     </div>
     <div class="summary ${getColor(namaz.asar)}">
       <p class="title">عصر</p>
       <h4 class="value">${getText(namaz.asar)}</h4>
+      <div class="loader-wrap"><div class="loader"></div></div>
     </div>
     <div class="summary ${getColor(namaz.maghrib)}">
       <p class="title">مغرب</p>
       <h4 class="value">${getText(namaz.maghrib)}</h4>
+      <div class="loader-wrap"><div class="loader"></div></div>
     </div>
     <div class="summary ${getColor(namaz.isha)}">
       <p class="title">عشاء</p>
       <h4 class="value">${getText(namaz.isha)}</h4>
+      <div class="loader-wrap"><div class="loader"></div></div>
   </div>`;
     html += single;
   });

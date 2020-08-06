@@ -139,6 +139,11 @@ label {
       }
     }
   }
+  .loader {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.16);
+    border-color: white;
+    border-top-color: $brand;
+  }
 }
 
 .checkbox {
@@ -317,6 +322,18 @@ label {
       background: $nahi;
       .title {
         background: darken($nahi, 4%);
+      }
+    }
+  }
+}
+.singleDay {
+  &.loading {
+    .summary {
+      position: relative;
+      .loader {
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.16);
+        border-color: white;
+        border-top-color: $brand;
       }
     }
   }
