@@ -1,5 +1,6 @@
 require("babel-polyfill");
 import Litepicker from "litepicker";
+import  Choices from 'choices.js/public/assets/scripts/choices.js';
 
 const pageContainer = document.querySelector(".page-container");
 const pages = document.querySelectorAll(".page-container>.page");
@@ -15,6 +16,17 @@ auth.onAuthStateChanged(user => {
     moveToPage(1);
     pageContainer.classList.add("logged-in");
     nav.classList.remove("hide");
+
+    // START: For admin role only
+    nav.remove();
+    document
+      .querySelectorAll(".page:not([data-page='admin']):not([data-page='login'])")
+      .forEach((e) => {
+        e.remove();
+      });
+    // END: For admin role only
+
+
   } else {
     console.log('user logged out');
   }
@@ -63,6 +75,25 @@ tabLinks.forEach((ele) => {
     });
   });
 });
+
+
+// Admin
+
+const choices = new Choices('#selectPerson',{
+  searchPlaceholderValue: "شخص کی تلاش کریں",
+  shouldSort: false,
+
+});
+
+choices.setChoices(
+  [
+    { value: 'عبداللہ', label: 'عبداللہ'},
+    { value: 'ابُو غالب', label: 'ابُو غالب' },
+    { value: 'حنان', label: 'حنان' },
+  ]
+);
+
+
 
 // Login
 const loginBtn = document.querySelector("#loginBtn");

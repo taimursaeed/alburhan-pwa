@@ -24,12 +24,48 @@
         </div>
       </form>
     </div>
+    <div class="page" data-page="admin">
+      <section class="page-section">
+        <header>
+          <h2><span class="icon admin"></span>منتظم</h2>
+        </header>
+        <div class="page-content">
+          <label>شخص کا انتخاب</label>
+          <div class="mt-1">
+            <select id="selectPerson"></select>
+          </div>
+          <div class="mt-2">
+            <label>تاریخ کی حدود </label>
+          </div>
+          <div class="calendar-wrap mt-1 mb-1">
+            <span class="input-group">
+              <span class="icon calendar"> </span>
+              <input type="text" id="multipleDayNamaz" />
+            </span>
+          </div>
+          <div class="tags">
+            <button class="btn btn-primary" id="lastDay">کل</button>
+            <button class="btn btn-primary" id="last3Days">3 دن</button>
+            <button class="btn btn-primary" id="last7Days">7 دن</button>
+            <button class="btn btn-primary" id="last30Days">1 مہینہ</button>
+          </div>
+          <div class="multiDays summaries" id="multipleDaySummary">
+            <p class="placeholder">تاریخ کا انتخاب کریں</p>
+            <div class="loader-wrap">
+              <div class="loader"></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
     <div class="page" data-page="home">
       <section class="page-section">
         <header>
           <h2><span class="icon home"></span>ھوم</h2>
         </header>
         <div class="page-content">
+          <select id="selectPerson"></select>
           <div class="tabs">
             <div class="tab-buttons">
               <button class="btn btn-primary btn-tab active" id="singleNamaz">

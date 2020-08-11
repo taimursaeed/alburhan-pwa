@@ -128,31 +128,36 @@ label {
 
     &.card-fajar {
       .head {
-        background: $fajar url(../images/fajar-bg.svg) bottom left / auto no-repeat;
+        background: $fajar url(../images/fajar-bg.svg) bottom left / auto
+          no-repeat;
       }
     }
 
     &.card-zuhar {
       .head {
-        background: $zuhar url(../images/zuhar-bg.svg) bottom left / auto no-repeat;
+        background: $zuhar url(../images/zuhar-bg.svg) bottom left / auto
+          no-repeat;
       }
     }
 
     &.card-asar {
       .head {
-        background: $asar url(../images/asar-bg.svg) bottom left / auto no-repeat;
+        background: $asar url(../images/asar-bg.svg) bottom left / auto
+          no-repeat;
       }
     }
 
     &.card-maghrib {
       .head {
-        background: $maghrib url(../images/maghrib-bg.svg) bottom left / auto no-repeat;
+        background: $maghrib url(../images/maghrib-bg.svg) bottom left / auto
+          no-repeat;
       }
     }
 
     &.card-isha {
       .head {
-        background: $isha url(../images/isha-bg.svg) bottom left / auto no-repeat;
+        background: $isha url(../images/isha-bg.svg) bottom left / auto
+          no-repeat;
       }
     }
   }
@@ -177,10 +182,10 @@ label {
     display: none;
 
     &:checked {
-      ~.checkbox-text {
+      ~ .checkbox-text {
         &:before {
           font-family: "iconfonts";
-          content: "\ea07";
+          content: "\ea05";
         }
       }
     }
@@ -198,7 +203,6 @@ label {
       position: absolute;
       top: 50%;
       right: 8px;
-      font-size: 0.5em;
       width: 16px;
       height: 16px;
       line-height: 16px;
@@ -215,7 +219,7 @@ label {
   &.bajamat {
     input {
       &:checked {
-        ~.checkbox-text {
+        ~ .checkbox-text {
           background: rgba($brand, 0.2);
           color: $brand;
 
@@ -230,7 +234,7 @@ label {
   &.akeelay {
     input {
       &:checked {
-        ~.checkbox-text {
+        ~ .checkbox-text {
           background: rgba($brand, 0.2);
           color: $brand;
 
@@ -245,7 +249,7 @@ label {
   &.qaza {
     input {
       &:checked {
-        ~.checkbox-text {
+        ~ .checkbox-text {
           background: rgba($brand, 0.2);
           color: $brand;
 
@@ -260,7 +264,7 @@ label {
   &.nahi {
     input {
       &:checked {
-        ~.checkbox-text {
+        ~ .checkbox-text {
           background: rgba($brand, 0.2);
           color: $brand;
 
@@ -444,4 +448,36 @@ label {
       background: rgba($brand, 0.2);
     }
   }
+}
+
+// Choices
+.choices__inner,
+.is-open .choices__inner {
+  border: none;
+  border-radius: $border-radius;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16);
+  outline: none;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 20px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background: white;
+}
+.choices__list--dropdown {
+  border: none;
+  border-radius: $border-radius;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16);
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background: white;
+  margin-top: 6px;
+}
+.choices[data-type*="select-one"]:after {
+  display: none;
+}
+.choices__item--disabled {
+  display: none;
+}
+.choices[data-type*="select-one"] {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
