@@ -9,24 +9,35 @@ const navLinks = document.querySelectorAll(".nav>button");
 const namazCards = document.querySelectorAll(".card-namaz");
 const tabLinks = document.querySelectorAll(".btn-tab");
 const tabContainer = document.querySelectorAll(".tab-content");
+let isAdmin = false;
 let pageNo;
 
 auth.onAuthStateChanged(user => {
   if (user) {
+    if(user.displayName != null){
     moveToPage(1);
     pageContainer.classList.add("logged-in");
     nav.classList.remove("hide");
 
     // START: For admin role only
+    if(user.email.includes('admin@alburhan.org')){
+      isAdmin = true;
     nav.remove();
     document
       .querySelectorAll(".page:not([data-page='admin']):not([data-page='login'])")
       .forEach((e) => {
         e.remove();
       });
+      initializePersonSelector();
+    }else{
+      document
+      .querySelectorAll(".page[data-page='admin']")
+      .forEach((e) => {
+        e.remove();
+      });
+    }
     // END: For admin role only
-
-
+  }
   } else {
     console.log('user logged out');
   }
@@ -53,10 +64,10 @@ navLinks.forEach((ele) => {
         pageNo = index;
       }
     });
+    pageNo = isAdmin ? pageNo  : pageNo-1;
     moveToPage(pageNo);
   });
 });
-
 // Tabs
 
 tabLinks.forEach((ele) => {
@@ -75,41 +86,46 @@ tabLinks.forEach((ele) => {
     });
   });
 });
-
-
-// Admin
-
-const choices = new Choices('#selectPerson',{
-  searchPlaceholderValue: "شخص کی تلاش کریں",
-  shouldSort: false,
-
-});
-
-choices.setChoices(
-  [
-    { value: 'عبداللہ', label: 'عبداللہ'},
-    { value: 'ابُو غالب', label: 'ابُو غالب' },
-    { value: 'حنان', label: 'حنان' },
-  ]
-);
-
-
-
 // Login
 const loginBtn = document.querySelector("#loginBtn");
-loginBtn.addEventListener("click", (e) => {
+const userNameBtn = document.querySelector("#userNameBtn");
+const userNameForm = document.querySelector("#setUserNameForm");
 
+loginBtn.addEventListener("click", (e) => {
   const email = loginForm['login-email'].value;
   const password = loginForm['login-password'].value;
   auth.signInWithEmailAndPassword(email, password).then(cred => {
+         if(cred.user.displayName == null){
+          document.querySelector("#loginForm").classList.add("hide");
+          userNameForm.classList.remove("hide");
+      }else{
       moveToPage(1);
       pageContainer.classList.add("logged-in");
       nav.classList.remove("hide");
-    })
-    .catch(() => {
+      }
+    }).catch(() => {
       document.getElementById("loginError").classList.remove("hide");
     });
 });
+userNameBtn.addEventListener("click", (e) => {
+  const userName = setUserNameForm['user-name'].value;
+ auth.currentUser.updateProfile({
+  displayName: userName,
+}).then(cred => {
+         if(cred.user.displayName == null){
+          loginForm.classList.add("hide");
+          userNameForm.classList.remove("hide");
+      }else{
+      moveToPage(1);
+      pageContainer.classList.add("logged-in");
+      nav.classList.remove("hide");
+      }
+    }).catch(() => {
+      document.getElementById("loginError").classList.remove("hide");
+    });
+});
+
+ 
 
 const picker = new Litepicker({
   element: document.getElementById("litepicker"),
@@ -506,6 +522,40 @@ function getText(namaz) {
     default:
       return "نہی ادا کی";
   }
+}
+
+function initializePersonSelector(){
+const choices = new Choices('#selectPerson',{
+  searchPlaceholderValue: "شخص کی تلاش کریں",
+  shouldSort: false,
+});
+debugger;
+  // List batch of users, 1000 at a time.
+  admin.auth().listUsers(1000, null)
+    .then(function(listUsersResult) {
+      listUsersResult.users.forEach(function(userRecord) {
+      debugger;
+        console.log('user', userRecord.toJSON());
+      });
+      if (listUsersResult.pageToken) {
+        debugger;
+
+        listAllUsers(listUsersResult.pageToken);
+      }
+    })
+    .catch(function(error) {
+      debugger;
+      console.log('Error listing users:', error);
+    });
+
+
+choices.setChoices(
+  [
+    { value: 'عبداللہ', label: 'عبداللہ'},
+    { value: 'ابُو غالب', label: 'ابُو غالب' },
+    { value: 'حنان', label: 'حنان' },
+  ]
+);
 }
 
 //////////////////////////////// app.js ////////////////////////////////

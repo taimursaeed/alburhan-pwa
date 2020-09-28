@@ -23,6 +23,15 @@
           دیا گیا ای میل یا پاس ورڈ غلط ہے. دوبارہ کوشش کریں
         </div>
       </form>
+      <form id="setUserNameForm" class="form-login hide">
+        <input type="text" id="user-name" placeholder="اپنا نام لکھیں" />
+        <button class="btn btn-secondary" id="userNameBtn" type="button">
+          محفوظ کریں
+        </button>
+        <div class="error hide" id="loginError">
+          دیا گیا ای میل یا پاس ورڈ غلط ہے. دوبارہ کوشش کریں
+        </div>
+      </form>
     </div>
     <div class="page" data-page="admin">
       <section class="page-section">
@@ -65,7 +74,6 @@
           <h2><span class="icon home"></span>ھوم</h2>
         </header>
         <div class="page-content">
-          <select id="selectPerson"></select>
           <div class="tabs">
             <div class="tab-buttons">
               <button class="btn btn-primary btn-tab active" id="singleNamaz">
