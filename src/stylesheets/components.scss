@@ -50,6 +50,10 @@ label {
   height: 44px;
   padding: 0 1em;
   transition: all 0.3s ease;
+  &.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
 }
 
 .btn-primary {
@@ -185,8 +189,11 @@ label {
       ~ .checkbox-text {
         &:before {
           font-family: "iconfonts";
-          content: "\ea05";
+          content: "\ea07";
+          background: $brand;
         }
+        background: rgba($brand, 0.2);
+        color: $brand;
       }
     }
   }
@@ -342,6 +349,12 @@ label {
       line-height: 1;
     }
 
+    background: $brand;
+
+    .title {
+      background: darken($brand, 4%);
+    }
+
     &.bajamat {
       background: $bajamat;
 
@@ -480,4 +493,41 @@ label {
 }
 .choices[data-type*="select-one"] {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.inline-list {
+  li {
+    display: inline-flex;
+    margin: 0 0.2em;
+  }
+}
+.list {
+  li {
+    p {
+      font-weight: bold;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      > .icon {
+        font-size: 1.2rem;
+        margin-left: 0.8rem;
+        &.tick {
+          &:before {
+            background: $bajamat;
+            color: white;
+          }
+        }
+        &.cross {
+          &:before {
+            background: $nahi;
+            color: white;
+          }
+        }
+        &:before {
+          vertical-align: middle;
+          border-radius: $border-radius;
+          padding: 0.2rem;
+        }
+      }
+    }
+  }
 }

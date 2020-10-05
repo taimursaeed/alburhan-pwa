@@ -1,10 +1,12 @@
 $__iconfont__data: map-merge(if(global_variable_exists('__iconfont__data'), $__iconfont__data, ()), (
 	"iconfonts": (
-		"admin": "\ea01",
-		"calendar": "\ea02",
-		"home": "\ea03",
-		"rug": "\ea04",
-		"tick": "\ea05"
+		"adhkaar": "\ea01",
+		"admin": "\ea02",
+		"calendar": "\ea03",
+		"cross": "\ea04",
+		"home": "\ea05",
+		"rug": "\ea06",
+		"tick": "\ea07"
 	)
 ));
 

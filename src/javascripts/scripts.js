@@ -5,6 +5,7 @@ import  Choices from 'choices.js/public/assets/scripts/choices.js';
 const pageContainer = document.querySelector(".page-container");
 const pages = document.querySelectorAll(".page-container>.page");
 const nav = document.querySelector(".nav");
+const navAdmin = document.querySelector("#navAdmin");
 const navLinks = document.querySelectorAll(".nav>button");
 const namazCards = document.querySelectorAll(".card-namaz");
 const tabLinks = document.querySelectorAll(".btn-tab");
@@ -17,19 +18,14 @@ auth.onAuthStateChanged(user => {
     if(user.displayName != null){
     moveToPage(1);
     pageContainer.classList.add("logged-in");
-    nav.classList.remove("hide");
 
     // START: For admin role only
     if(user.email.includes('admin@alburhan.org')){
       isAdmin = true;
-    nav.remove();
-    document
-      .querySelectorAll(".page:not([data-page='admin']):not([data-page='login'])")
-      .forEach((e) => {
-        e.remove();
-      });
+      navAdmin.classList.remove('hide');
       initializePersonSelector();
-    }else{
+    }
+    else{
       document
       .querySelectorAll(".page[data-page='admin']")
       .forEach((e) => {
@@ -125,7 +121,7 @@ userNameBtn.addEventListener("click", (e) => {
     });
 });
 
- 
+
 
 const picker = new Litepicker({
   element: document.getElementById("litepicker"),
@@ -173,6 +169,16 @@ const multipleDayNamaz = new Litepicker({
   singleMode: false,
   onSelect: function (start, end) {
     fetchMultipleDaysData(start, end);
+  }
+});
+
+const multipleDayAdkaar = new Litepicker({
+  element: document.getElementById("multipleDayAdkaar"),
+  startDate: new Date(),
+  maxDate: new Date(),
+  singleMode: false,
+  onSelect: function (start, end) {
+    //TODO: fetch adkhaar data
   }
 });
 
@@ -525,26 +531,52 @@ function getText(namaz) {
 }
 
 function initializePersonSelector(){
-const choices = new Choices('#selectPerson',{
-  searchPlaceholderValue: "شخص کی تلاش کریں",
-  shouldSort: false,
-});
-debugger;
+  // Admin
+
+  const personData = [
+    { value: 'عبداللہ', label: 'عبداللہ'},
+    { value: 'ابُو غالب', label: 'ابُو غالب' },
+    { value: 'حنان', label: 'حنان' },
+  ];
+
+  let choices = new Choices('#selectPerson',{
+    searchPlaceholderValue: "شخص کی تلاش کریں",
+    shouldSort: false,
+
+  });
+  choices.setChoices(personData);
+
+
+
+  choices = new Choices('#selectPersonAssign',{
+    searchPlaceholderValue: "شخص کی تلاش کریں",
+    shouldSort: false,
+
+  });
+  choices.setChoices(personData);
+
+
+
+  choices = new Choices('#selectPersonMalumat',{
+    searchPlaceholderValue: "شخص کی تلاش کریں",
+    shouldSort: false,
+
+  });
+  choices.setChoices(personData);
+
+
   // List batch of users, 1000 at a time.
   admin.auth().listUsers(1000, null)
     .then(function(listUsersResult) {
       listUsersResult.users.forEach(function(userRecord) {
-      debugger;
         console.log('user', userRecord.toJSON());
       });
       if (listUsersResult.pageToken) {
-        debugger;
 
         listAllUsers(listUsersResult.pageToken);
       }
     })
     .catch(function(error) {
-      debugger;
       console.log('Error listing users:', error);
     });
 
