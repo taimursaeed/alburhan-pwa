@@ -21,6 +21,9 @@ auth.onAuthStateChanged(user => {
 
     // START: For admin role only
     if(user.email.includes('admin@alburhan.org')){
+      user.updateProfile({
+        displayName: "ایڈمن"
+      });
       isAdmin = true;
       navAdmin.classList.remove('hide');
       initializePersonSelector();
@@ -34,6 +37,7 @@ auth.onAuthStateChanged(user => {
     }
     // END: For admin role only
   }
+  AddUser(user.uid,user.displayName);
   } else {
     console.log('user logged out');
   }
@@ -43,7 +47,15 @@ auth.onAuthStateChanged(user => {
 function moveToPage(p) {
   pageContainer.style.transform = `translateX(${p}00%)`;
 }
-
+async function AddUser(_id, _userName){
+  let user = await db.collection("users").where("id", "==", _id).get();
+ if(user.empty){
+  await db.collection("users").add({
+    id: _id,
+    name: _userName,
+    });
+ }
+}
 // Page Transitions
 navLinks.forEach((ele) => {
   ele.addEventListener("click", (e) => {
@@ -530,15 +542,18 @@ function getText(namaz) {
   }
 }
 
-function initializePersonSelector(){
+async function initializePersonSelector(){
   // Admin
-
-  const personData = [
-    { value: 'عبداللہ', label: 'عبداللہ'},
-    { value: 'ابُو غالب', label: 'ابُو غالب' },
-    { value: 'حنان', label: 'حنان' },
-  ];
-
+  let personData = [];
+  let selectorUsers = await db.collection("users").get().then(snapshot => {
+    snapshot.docs.forEach(doc => {
+     let _us = doc.data();
+     personData.push({
+         value : _us.id,
+         label: _us.name
+       })
+    });
+  });
   let choices = new Choices('#selectPerson',{
     searchPlaceholderValue: "شخص کی تلاش کریں",
     shouldSort: false,
